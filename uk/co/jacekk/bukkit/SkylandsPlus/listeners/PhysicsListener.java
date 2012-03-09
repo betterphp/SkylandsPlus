@@ -6,7 +6,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPhysicsEvent;
 
-import uk.co.jacekk.bukkit.SkylandsPlus.generator.ChunkGeneratorOld;
+import uk.co.jacekk.bukkit.SkylandsPlus.generator.ChunkGenerator;
 
 public class PhysicsListener implements Listener {
 	
@@ -15,7 +15,7 @@ public class PhysicsListener implements Listener {
 		Material changed = event.getChangedType();
 		
 		if (changed == Material.SAND || changed == Material.GRAVEL){
-			if (event.getBlock().getWorld().getGenerator() instanceof ChunkGeneratorOld){
+			if (event.getBlock().getWorld().getGenerator() instanceof ChunkGenerator){
 				event.setCancelled(true);
 			}
 		}

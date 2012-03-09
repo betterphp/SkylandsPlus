@@ -7,13 +7,13 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
-import uk.co.jacekk.bukkit.SkylandsPlus.generator.ChunkGeneratorOld;
+import uk.co.jacekk.bukkit.SkylandsPlus.generator.ChunkGenerator;
 
 public class MobSpawnListener implements Listener {
 	
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onCreatureSpawn(CreatureSpawnEvent event){
-		if (event.getLocation().getWorld().getGenerator() instanceof ChunkGeneratorOld && event.getSpawnReason() == SpawnReason.NATURAL){
+		if (event.getLocation().getWorld().getGenerator() instanceof ChunkGenerator && event.getSpawnReason() == SpawnReason.NATURAL){
 			int total = 0;
 			
 			for (Entity entity : event.getLocation().getChunk().getEntities()){

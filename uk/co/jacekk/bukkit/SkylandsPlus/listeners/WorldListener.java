@@ -13,7 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.world.WorldInitEvent;
 
 import uk.co.jacekk.bukkit.SkylandsPlus.SkylandsPlus;
-import uk.co.jacekk.bukkit.SkylandsPlus.generator.ChunkGeneratorOld;
+import uk.co.jacekk.bukkit.SkylandsPlus.generator.ChunkGenerator;
 
 public class WorldListener implements Listener {
 	
@@ -27,7 +27,7 @@ public class WorldListener implements Listener {
 	public void onWorldInit(WorldInitEvent event){
 		World world = event.getWorld();
 		
-		if (world.getGenerator() instanceof ChunkGeneratorOld){
+		if (world.getGenerator() instanceof ChunkGenerator){
 			WorldServer worldServer = ((CraftWorld) world).getHandle();
 			
 			try{
