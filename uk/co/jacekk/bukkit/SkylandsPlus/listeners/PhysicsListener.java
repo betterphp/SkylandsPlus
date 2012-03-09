@@ -6,7 +6,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPhysicsEvent;
 
-import uk.co.jacekk.bukkit.SkylandsPlus.generator.ChunkGenerator;
+import uk.co.jacekk.bukkit.SkylandsPlus.generation.ChunkGenerator;
 
 public class PhysicsListener implements Listener {
 	

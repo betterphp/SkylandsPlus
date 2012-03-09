@@ -13,7 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.world.WorldInitEvent;
 
 import uk.co.jacekk.bukkit.SkylandsPlus.SkylandsPlus;
-import uk.co.jacekk.bukkit.SkylandsPlus.generator.ChunkGenerator;
+import uk.co.jacekk.bukkit.SkylandsPlus.generation.ChunkGenerator;
 
 public class WorldListener implements Listener {
 	

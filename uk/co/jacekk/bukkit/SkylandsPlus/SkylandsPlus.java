@@ -43,7 +43,7 @@ public class SkylandsPlus extends JavaPlugin {
 	}
 	
 	public ChunkGenerator getDefaultWorldGenerator(String worldName, String id){
-		return new uk.co.jacekk.bukkit.SkylandsPlus.generator.ChunkGenerator();
+		return new uk.co.jacekk.bukkit.SkylandsPlus.generation.ChunkGenerator();
 	}
 	
 }

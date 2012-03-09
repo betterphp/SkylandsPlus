@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
-import uk.co.jacekk.bukkit.SkylandsPlus.generator.ChunkGenerator;
+import uk.co.jacekk.bukkit.SkylandsPlus.generation.ChunkGenerator;
 
 public class MobSpawnListener implements Listener {
 	
