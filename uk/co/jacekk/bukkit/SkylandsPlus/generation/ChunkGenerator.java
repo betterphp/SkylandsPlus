@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.server.NoiseGeneratorOctaves;
+import net.minecraft.server.WorldGenCaves;
 
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.craftbukkit.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 
@@ -21,6 +23,8 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 	private NoiseGeneratorOctaves o;
 	private NoiseGeneratorOctaves a;
 	private NoiseGeneratorOctaves b;
+	
+	private WorldGenCaves caveGenerator;
 	
 	private double[] q;
 	private double[] t = new double[256];
@@ -246,7 +250,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 						if (j1 == -1){
 							if (i1 <= 0){
 								surface = (byte) Material.AIR.getId();
-							//	ground = (byte) Material.GRASS.getId();
+								ground = (byte) Material.GRASS.getId();
 							}else if (y >= b0 - 4 && y <= b0 + 1){
 						//		b1 = surfaceBlock;
 						//		b2 = groundBlock;
@@ -279,6 +283,8 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			this.o = new NoiseGeneratorOctaves(this.random, 4);
 			this.a = new NoiseGeneratorOctaves(this.random, 10);
 			this.b = new NoiseGeneratorOctaves(this.random, 16);
+			
+			this.caveGenerator = new WorldGenCaves();
 		}
 		
 		byte[] blocks = new byte[32768];
@@ -286,6 +292,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		this.random.setSeed((long) chunkX * 341873128712L + (long) chunkZ * 132897987541L);
 		
 		this.shapeLand(world, chunkX, chunkZ, blocks);
+		
+		this.caveGenerator.a(((CraftWorld) world).getHandle().chunkProvider, (net.minecraft.server.World) world, chunkX, chunkZ, blocks);
+		
 		this.decorateLand(world, chunkX, chunkZ, blocks);
 		
 		return blocks;
