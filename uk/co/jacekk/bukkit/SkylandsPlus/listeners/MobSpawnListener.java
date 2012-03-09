@@ -13,14 +13,14 @@ public class MobSpawnListener implements Listener {
 	
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onCreatureSpawn(CreatureSpawnEvent event){
-		if (event.getLocation().getWorld().getGenerator() instanceof ChunkGenerator && event.getSpawnReason() == SpawnReason.NATURAL){
+		if (event.getSpawnReason() == SpawnReason.NATURAL && event.getLocation().getWorld().getGenerator() instanceof ChunkGenerator){
 			int total = 0;
 			
 			for (Entity entity : event.getLocation().getChunk().getEntities()){
 				if (entity.getClass().equals(event.getEntity().getClass())){
 					++total;
 					
-					if (total > 3){
+					if (total > 4){
 						event.setCancelled(true);
 						return;
 					}
