@@ -88,6 +88,52 @@ public class OrePopulator extends BlockPopulator {
 			
 			(new WorldGenMinable(Material.LAPIS_ORE.getId(), 6)).a(mcWorld, this.random, x, y, z);
 		}
+		
+		//for upper islands
+		for (i = 0; i < 20; ++i){
+			x = worldChunkX + this.random.nextInt(16);
+			z = worldChunkZ + this.random.nextInt(16);
+			
+			y = this.random.nextInt((int) (world.getSeaLevel() * 0.8)) + 128;
+			
+			(new WorldGenMinable(Material.IRON_ORE.getId(), 8)).a(mcWorld, this.random, x, y, z);
+		}
+		
+		for (i = 0; i < 3; ++i){
+			x = worldChunkX + this.random.nextInt(16);
+			z = worldChunkZ + this.random.nextInt(16);
+			
+			y = this.random.nextInt((int) (world.getSeaLevel() * 0.75)) + 128;
+			
+			(new WorldGenMinable(Material.GOLD_ORE.getId(), 8)).a(mcWorld, this.random, x, y, z);
+		}
+		
+		for (i = 0; i < 8; ++i){
+			x = worldChunkX + this.random.nextInt(16);
+			z = worldChunkZ + this.random.nextInt(16);
+			
+			y = this.random.nextInt(44) + 128;
+			
+			(new WorldGenMinable(Material.REDSTONE_ORE.getId(), 7)).a(mcWorld, this.random, x, y, z);
+		}
+		
+		for (i = 0; i < 2; ++i){
+			x = worldChunkX + this.random.nextInt(16);
+			z = worldChunkZ + this.random.nextInt(16);
+			
+			y = this.random.nextInt((int) (world.getSeaLevel() * 0.4)) + 128;
+			
+			(new WorldGenMinable(Material.DIAMOND_ORE.getId(), 7)).a(mcWorld, this.random, x, y, z);
+		}
+		
+		for (i = 0; i < 2; ++i){
+			x = worldChunkX + this.random.nextInt(16);
+			z = worldChunkZ + this.random.nextInt(16);
+			
+			y = this.random.nextInt((int) (world.getSeaLevel() * 0.5)) + 128;
+			
+			(new WorldGenMinable(Material.LAPIS_ORE.getId(), 6)).a(mcWorld, this.random, x, y, z);
+		}
 	}
 
 }

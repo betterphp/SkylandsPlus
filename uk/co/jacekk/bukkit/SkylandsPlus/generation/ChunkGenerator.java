@@ -4,19 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.server.NoiseGeneratorOctaves;
-import net.minecraft.server.WorldGenCaves;
-
-import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 
 public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 	
-	private Random random;
+	private Random randomForBottomHalf;
+	private Random randomForTopHalf;
 	
+	private ChunkPartsGenerator bottomHalf;
+	private ChunkPartsGenerator topHalf;
+	
+	/*
+    private Random random;
 	private NoiseGeneratorOctaves k;
 	private NoiseGeneratorOctaves l;
 	private NoiseGeneratorOctaves m;
@@ -35,7 +36,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 	double[] g;
 	double[] h;
 	
-	int[][] i = new int[32][32];
+	int[][] i = new int[32][32];*/
 	
 	public List<BlockPopulator> getDefaultPopulators(World world){
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
@@ -52,7 +53,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		return populators;
 	}
 	
-	// anybody know what this does, let me know !
+	/* anybody know what this does, let me know !
 	private double[] a(double[] adouble, int i, int j, int k, int l, int i1, int j1){
 		if (adouble == null){
 			adouble = new double[l * i1 * j1];
@@ -271,33 +272,58 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 				}
 			}
 		}
+	}*/
+	
+	public int xyzToByte(int x, int y, int z)
+	{
+		return (x * 16 + z) * 256 + y;
 	}
 	
-	public byte[] generate(World world, Random random, int chunkX, int chunkZ){
-		if (this.random == null){
-			this.random = new Random(world.getSeed());
-			
-			this.k = new NoiseGeneratorOctaves(this.random, 16);
-			this.l = new NoiseGeneratorOctaves(this.random, 16);
-			this.m = new NoiseGeneratorOctaves(this.random, 8);
-			this.o = new NoiseGeneratorOctaves(this.random, 4);
-			this.a = new NoiseGeneratorOctaves(this.random, 10);
-			this.b = new NoiseGeneratorOctaves(this.random, 16);
-			
-			this.caveGenerator = new WorldGenCaves();
+	public int xyzToByte128(int x, int y, int z)
+	{
+		return (x * 16 + z) * 128 + y;
+	}
+	
+	
+
+	public byte[] generate(World world, Random random, int chunkX, int chunkZ)
+	{
+		
+		if(randomForBottomHalf == null || randomForTopHalf == null)
+		{
+			randomForBottomHalf = new Random(world.getSeed());
+			randomForTopHalf = new Random(world.getSeed() + 237182378192L);
+			bottomHalf = new ChunkPartsGenerator(randomForBottomHalf);
+			topHalf = new ChunkPartsGenerator(randomForTopHalf);
+		}
+
+		byte[] blocksBottom = new byte[16 * 16 * 128];
+
+		bottomHalf.shapeLand(world, chunkX, chunkZ, blocksBottom);
+		bottomHalf.decorateLand(world, chunkX, chunkZ, blocksBottom);
+		
+		byte[] blocksTop = new byte[16 * 16 * 128];
+		
+		topHalf.shapeLand(world, chunkX, chunkZ, blocksTop);
+		topHalf.decorateLand(world, chunkX, chunkZ, blocksTop);
+		
+		
+		byte[] realBlocks = new byte[16 * 16 * 256];
+		
+		for(int x = 0; x < 16; x++)
+		{
+			for(int z = 0; z < 16; z++)
+			{
+				for(int y = 0; y < 128; y++)
+				{
+					realBlocks[this.xyzToByte(x, y, z)] = blocksBottom[this.xyzToByte128(x, y, z)];
+					realBlocks[this.xyzToByte(x, y + 128, z)] = blocksTop[this.xyzToByte128(x, y, z)];
+				}
+			}
 		}
 		
-		byte[] blocks = new byte[32768];
-		
-		this.random.setSeed((long) chunkX * 341873128712L + (long) chunkZ * 132897987541L);
-		
-		this.shapeLand(world, chunkX, chunkZ, blocks);
-		
-		this.caveGenerator.a(((CraftWorld) world).getHandle().chunkProvider, (net.minecraft.server.World) world, chunkX, chunkZ, blocks);
-		
-		this.decorateLand(world, chunkX, chunkZ, blocks);
-		
-		return blocks;
+	
+		return realBlocks;
 	}
 	
 }
