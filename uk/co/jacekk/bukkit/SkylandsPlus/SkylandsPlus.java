@@ -40,6 +40,7 @@ public class SkylandsPlus extends JavaPlugin {
 	
 	public void onDisable(){
 		this.log.info("Disabled.");
+		//test to see if my egit works - tony
 	}
 	
 	public ChunkGenerator getDefaultWorldGenerator(String worldName, String id){
