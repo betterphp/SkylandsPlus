@@ -29,7 +29,7 @@ public class TreePopulator extends BlockPopulator {
 		
 		for (x = 4; x < 13; ++x){
 			for (z = 4; z < 13; ++z){
-				for (y = 0; y < world.getMaxHeight(); y++){
+				for (y = 0; y < 128; y++){
 					if (y > 4){
 						block = chunk.getBlock(x, y, x);
 						ground = block.getRelative(BlockFace.DOWN);
@@ -48,13 +48,11 @@ public class TreePopulator extends BlockPopulator {
 								if (this.random.nextInt(1000) < 70){
 									world.generateTree(block.getLocation(), (this.random.nextInt(100) < 60) ? TreeType.REDWOOD : TreeType.TALL_REDWOOD);
 								}
-							}else if (biome == Biome.SWAMPLAND){
-								if (this.random.nextInt(1000) < 60){
-									world.generateTree(block.getLocation(), TreeType.TREE);
-								}
-							}else if (biome == Biome.MUSHROOM_ISLAND || biome == Biome.MUSHROOM_SHORE){
-								if (this.random.nextInt(1000) < 40){
-									world.generateTree(block.getLocation(), (this.random.nextInt(100) < 50) ? TreeType.BROWN_MUSHROOM : TreeType.RED_MUSHROOM);
+							}else if (biome == Biome.JUNGLE || biome == Biome.JUNGLE_HILLS){
+								if (this.random.nextInt(1000) < 75){
+									world.generateTree(block.getLocation(), TreeType.JUNGLE);
+								}else if (this.random.nextInt(1000) < 150){
+									world.generateTree(block.getLocation(), TreeType.JUNGLE_BUSH);
 								}
 							}else if (biome != Biome.DESERT && biome != Biome.DESERT_HILLS){
 								if (this.random.nextInt(1000) < 75){

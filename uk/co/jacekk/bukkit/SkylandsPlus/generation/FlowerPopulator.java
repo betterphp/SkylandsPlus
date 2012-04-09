@@ -27,24 +27,20 @@ public class FlowerPopulator extends BlockPopulator {
 		
 		List<Biome> iceBiomes = Arrays.asList(Biome.TUNDRA, Biome.TAIGA, Biome.TAIGA_HILLS, Biome.ICE_PLAINS, Biome.ICE_DESERT, Biome.ICE_MOUNTAINS, Biome.FROZEN_RIVER, Biome.FROZEN_OCEAN);
 		
-		int worldChunkX = chunk.getX() * 16;
-		int worldChunkZ = chunk.getZ() * 16;
-		
 		for (x = 0; x < 16; ++x){
 			for (z = 0; z < 16; ++z){
-				for (y = 0; y < world.getMaxHeight(); y++){
+				for (y = 0; y < 128; y++){
 					if (y > 4){
 						block = chunk.getBlock(x, y, z);
 						ground = block.getRelative(BlockFace.DOWN);
-						// biome = block.getBiome();
-						biome = world.getBiome(worldChunkX + x, worldChunkZ + z);
+						biome = block.getBiome();
 						
 						if (ground.getType() == Material.GRASS){
 							if (biome == Biome.PLAINS){
 								if (this.random.nextInt(100) < 7){
 									block.setType((this.random.nextInt(100) < 75) ? Material.YELLOW_FLOWER : Material.RED_ROSE);
 								}
-							}else if (biome != Biome.DESERT && biome != Biome.SWAMPLAND && biome != Biome.MUSHROOM_ISLAND && biome != Biome.MUSHROOM_SHORE && iceBiomes.contains(biome) == false){
+							}else if (biome != Biome.DESERT && iceBiomes.contains(biome) == false){
 								if (this.random.nextInt(100) < 2){
 									block.setType((this.random.nextInt(100) < 75) ? Material.YELLOW_FLOWER : Material.RED_ROSE);
 								}

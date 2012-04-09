@@ -36,9 +36,9 @@ public class WorldListener implements Listener {
 				Field type = worldData.getDeclaredField("type");
 				type.setAccessible(true);
 				
-				type.set(worldServer.worldData, WorldType.FLAT);
+				type.set(worldServer.worldData, WorldType.NORMAL);
 				
-				plugin.log.info("Changed the world type of '" + world.getName() + "' to flat (this makes the void blue down to y = 0).");
+				plugin.log.info("Set the world type of '" + world.getName() + "' to normal (this is required for custom biomes to work).");
 			}catch (Exception e){
 				plugin.log.info("Could not change the world type of '" + world.getName() + "'.");
 				e.printStackTrace();

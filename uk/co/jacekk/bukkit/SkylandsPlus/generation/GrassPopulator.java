@@ -69,7 +69,7 @@ public class GrassPopulator extends BlockPopulator {
 								block.setType(Material.LONG_GRASS);
 								block.setData((byte) 0x1);
 							}
-						}else if (biome != Biome.MUSHROOM_ISLAND && biome != Biome.MUSHROOM_SHORE){
+						}else{
 							if (this.random.nextInt(100) < 14){
 								block.setType(Material.LONG_GRASS);
 								block.setData((byte) ((this.random.nextInt(100) < 85) ? 0x1 : 0x2));

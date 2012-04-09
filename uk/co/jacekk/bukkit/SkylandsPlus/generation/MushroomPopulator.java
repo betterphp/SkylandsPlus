@@ -28,7 +28,7 @@ public class MushroomPopulator extends BlockPopulator {
 		for (x = 0; x < 16; ++x){
 			for (z = 0; z < 16; ++z){
 				if (world.getBiome(worldChunkX + x, worldChunkZ + z) == Biome.SWAMPLAND){
-					for (y = world.getMaxHeight(); y > 0; --y){
+					for (y = 128; y > 0; --y){
 						block = chunk.getBlock(x, y, z);
 						ground = block.getRelative(BlockFace.DOWN);
 						
