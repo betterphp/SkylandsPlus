@@ -38,7 +38,7 @@ public class WorldListener implements Listener {
 				
 				type.set(worldServer.worldData, WorldType.NORMAL);
 				
-				plugin.log.info("Set the world type of '" + world.getName() + "' to normal (this is required for custom biomes to work).");
+				plugin.log.info("We have set the world type of '" + world.getName() + "' to normal (this is required for custom biomes to work).");
 			}catch (Exception e){
 				plugin.log.info("Could not change the world type of '" + world.getName() + "'.");
 				e.printStackTrace();
