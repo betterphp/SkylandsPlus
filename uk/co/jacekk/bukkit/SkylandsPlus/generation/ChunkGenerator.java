@@ -171,14 +171,14 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 					}
 					
 					double d0 = 0.25D;
-					double d1 = this.q[((j1 + 0) * i1 + k1 + 0) * l + l1 + 0];
-					double d2 = this.q[((j1 + 0) * i1 + k1 + 1) * l + l1 + 0];
-					double d3 = this.q[((j1 + 1) * i1 + k1 + 0) * l + l1 + 0];
-					double d4 = this.q[((j1 + 1) * i1 + k1 + 1) * l + l1 + 0];
-					double d5 = (this.q[((j1 + 0) * i1 + k1 + 0) * l + l1 + 1] - d1) * d0;
-					double d6 = (this.q[((j1 + 0) * i1 + k1 + 1) * l + l1 + 1] - d2) * d0;
-					double d7 = (this.q[((j1 + 1) * i1 + k1 + 0) * l + l1 + 1] - d3) * d0;
-					double d8 = (this.q[((j1 + 1) * i1 + k1 + 1) * l + l1 + 1] - d4) * d0;
+					double d1 = this.q[((j1 + 0) * i1 + (k1 + 0)) * l + l1 + 0];
+					double d2 = this.q[((j1 + 0) * i1 + (k1 + 1)) * l + l1 + 0];
+					double d3 = this.q[((j1 + 1) * i1 + (k1 + 0)) * l + l1 + 0];
+					double d4 = this.q[((j1 + 1) * i1 + (k1 + 1)) * l + l1 + 0];
+					double d5 = (this.q[((j1 + 0) * i1 + (k1 + 0)) * l + l1 + 1] - d1) * d0;
+					double d6 = (this.q[((j1 + 0) * i1 + (k1 + 1)) * l + l1 + 1] - d2) * d0;
+					double d7 = (this.q[((j1 + 1) * i1 + (k1 + 0)) * l + l1 + 1] - d3) * d0;
+					double d8 = (this.q[((j1 + 1) * i1 + (k1 + 1)) * l + l1 + 1] - d4) * d0;
 					
 					for (int i2 = 0; i2 < 4; ++i2){
 						double d9 = 0.125D;
@@ -188,12 +188,14 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 						double d13 = (d4 - d2) * d9;
 						
 						for (int j2 = 0; j2 < 8; ++j2){
-							int k2 = j2 + j1 * 8;
+					/*		int k2 = j2 + j1 * 8;
 							
 							k2 <<= 11;
 							int l2 = 0 + k1 * 8;
 							
 							int i3 = k2 | l2 << 7 | l1 * 4 + i2;
+					*/		
+							int i3 = j2 + j1 * 8 << 11 | 0 + k1 * 8 << 7 | l1 * 4 + i2;
 							
 							int j3 = 1 << 7;
 							double d14 = 0.125D;
@@ -201,13 +203,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 							double d16 = (d11 - d10) * d14;
 							
 							for (int k3 = 0; k3 < 8; ++k3){
-								int l3 = Material.AIR.getId();
-								
 								if (d15 > 0.0D){
-									l3 = Material.STONE.getId();
+									blocks[i3] = (byte) Material.STONE.getId();
 								}
-								
-								blocks[i3] = (byte) l3;
 								
 								i3 += j3;
 								d15 += d16;

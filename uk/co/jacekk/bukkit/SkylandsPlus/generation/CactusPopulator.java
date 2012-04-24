@@ -17,7 +17,7 @@ public class CactusPopulator extends BlockPopulator {
 	public CactusPopulator(World world) {
 		this.random = new Random(world.getSeed());
 	}
-
+	
 	public void populate(World world, Random random, Chunk chunk) {
 		int x, y, z, h, i, c;
 		Block block, blockAbove;
@@ -35,7 +35,7 @@ public class CactusPopulator extends BlockPopulator {
 			if (biome == Biome.DESERT || biome == Biome.DESERT_HILLS){
 				h = 1 + this.random.nextInt(3);
 				
-				for (y = world.getMaxHeight(); y > 0; ++y){
+				for (y = 128; y > 0; --y){
 					block = chunk.getBlock(x, y, z);
 					blockAbove = block.getRelative(BlockFace.UP);
 					
