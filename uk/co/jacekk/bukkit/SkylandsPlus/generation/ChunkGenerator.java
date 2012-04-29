@@ -52,7 +52,8 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			populators.add(new MushroomPopulator(world));
 			populators.add(new CactusPopulator(world));
 		}else{
-			// glowstone populator.
+			populators.add(new NetherSoulSandPopulator(world));
+			populators.add(new NetherGlowstonePopulator(world));
 		}
 		
 		return populators;
@@ -158,6 +159,8 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		
 		this.q = this.a(this.q, chunkX * b0, 0, chunkZ * b0, k, l, i1);
 		
+		byte blockType = (byte) ((world.getEnvironment() == Environment.NORMAL) ? Material.STONE.getId() : Material.NETHERRACK.getId());
+		
 		for (int j1 = 0; j1 < b0; ++j1){
 			int k1 = 0;
 			
@@ -187,14 +190,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 						double d12 = (d3 - d1) * d9;
 						double d13 = (d4 - d2) * d9;
 						
-						for (int j2 = 0; j2 < 8; ++j2){
-					/*		int k2 = j2 + j1 * 8;
-							
-							k2 <<= 11;
-							int l2 = 0 + k1 * 8;
-							
-							int i3 = k2 | l2 << 7 | l1 * 4 + i2;
-					*/		
+						for (int j2 = 0; j2 < 8; ++j2){	
 							int i3 = j2 + j1 * 8 << 11 | 0 + k1 * 8 << 7 | l1 * 4 + i2;
 							
 							int j3 = 1 << 7;
@@ -204,7 +200,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 							
 							for (int k3 = 0; k3 < 8; ++k3){
 								if (d15 > 0.0D){
-									blocks[i3] = (byte) Material.STONE.getId();
+									blocks[i3] = blockType;
 								}
 								
 								i3 += j3;
@@ -308,7 +304,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		
 		this.shapeLand(world, chunkX, chunkZ, blocks);
 		
-		this.caveGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
+		if (world.getEnvironment() == Environment.NORMAL){
+			this.caveGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
+		}
 		
 		this.decorateLand(world, chunkX, chunkZ, blocks);
 		
