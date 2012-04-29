@@ -7,6 +7,8 @@ import java.util.Random;
 
 import net.minecraft.server.NoiseGeneratorOctaves;
 import net.minecraft.server.WorldGenCaves;
+import net.minecraft.server.WorldGenCavesHell;
+import net.minecraft.server.WorldGenNether;
 
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -27,6 +29,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 	private NoiseGeneratorOctaves b;
 	
 	private WorldGenCaves caveGen;
+	
+	private WorldGenCavesHell caveGenNether;
+	private WorldGenNether genNetherFort;
 
 	private double[] q;
 	private double[] t = new double[256];
@@ -293,7 +298,12 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			this.a = new NoiseGeneratorOctaves(this.random, 10);
 			this.b = new NoiseGeneratorOctaves(this.random, 16);
 			
-			this.caveGen = new WorldGenCaves();
+			if (world.getEnvironment() == Environment.NORMAL){
+				this.caveGen = new WorldGenCaves();
+			}else{
+				this.caveGenNether = new WorldGenCavesHell();
+				this.genNetherFort = new WorldGenNether();
+			}
 		}
 		
 		net.minecraft.server.World mcWorld = ((CraftWorld) world).getHandle();
@@ -306,6 +316,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		
 		if (world.getEnvironment() == Environment.NORMAL){
 			this.caveGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
+		}else{
+			this.caveGenNether.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
+			this.genNetherFort.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
 		}
 		
 		this.decorateLand(world, chunkX, chunkZ, blocks);
