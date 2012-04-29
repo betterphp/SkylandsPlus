@@ -58,6 +58,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			populators.add(new CactusPopulator(world));
 		}else{
 			populators.add(new NetherSoulSandPopulator(world));
+			populators.add(new NetherFirePopulator(world));
 			populators.add(new NetherGlowstonePopulator(world));
 		}
 		
