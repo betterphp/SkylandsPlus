@@ -47,19 +47,27 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 	public List<BlockPopulator> getDefaultPopulators(World world){
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
 		
-		if (world.getEnvironment() == Environment.NORMAL){
-			populators.add(new LakePopulator(world));
-			populators.add(new GrassPopulator(world));
-			populators.add(new FlowerPopulator(world));
-			populators.add(new PumpkinPopulator(world));
-			populators.add(new OrePopulator(world));
-			populators.add(new TreePopulator(world));
-			populators.add(new MushroomPopulator(world));
-			populators.add(new CactusPopulator(world));
-		}else{
-			populators.add(new NetherSoulSandPopulator(world));
-			populators.add(new NetherFirePopulator(world));
-			populators.add(new NetherGlowstonePopulator(world));
+		switch (world.getEnvironment()){
+			case NORMAL:
+				populators.add(new LakePopulator(world));
+				populators.add(new GrassPopulator(world));
+				populators.add(new FlowerPopulator(world));
+				populators.add(new PumpkinPopulator(world));
+				populators.add(new OrePopulator(world));
+				populators.add(new TreePopulator(world));
+				populators.add(new MushroomPopulator(world));
+				populators.add(new CactusPopulator(world));
+			break;
+			
+			case THE_END:
+				// TODO: Make this.
+			break;
+			
+			case NETHER:
+				populators.add(new NetherSoulSandPopulator(world));
+				populators.add(new NetherFirePopulator(world));
+				populators.add(new NetherGlowstonePopulator(world));
+			break;
 		}
 		
 		return populators;
