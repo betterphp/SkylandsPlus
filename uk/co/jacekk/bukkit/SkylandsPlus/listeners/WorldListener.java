@@ -6,6 +6,7 @@ import net.minecraft.server.WorldServer;
 import net.minecraft.server.WorldType;
 
 import org.bukkit.World;
+import org.bukkit.World.Environment;
 import org.bukkit.craftbukkit.CraftWorld;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -27,7 +28,7 @@ public class WorldListener implements Listener {
 	public void onWorldInit(WorldInitEvent event){
 		World world = event.getWorld();
 		
-		if (world.getGenerator() instanceof ChunkGenerator){
+		if (world.getGenerator() instanceof ChunkGenerator && world.getEnvironment() == Environment.NORMAL){
 			WorldServer worldServer = ((CraftWorld) world).getHandle();
 			
 			try{
