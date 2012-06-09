@@ -55,7 +55,7 @@ public class GrassPopulator extends BlockPopulator {
 								block.setType(Material.LONG_GRASS);
 								block.setData((byte) 0x1);
 							}
-						}else if (biome == Biome.DESERT || biome == Biome.DESERT_HILLS){
+						}else if (biome == Biome.DESERT){
 							if (this.random.nextInt(100) < 3){
 								block.setType(Material.DEAD_BUSH);
 							}
