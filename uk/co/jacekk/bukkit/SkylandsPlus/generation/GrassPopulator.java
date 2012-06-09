@@ -72,6 +72,7 @@ public class GrassPopulator extends BlockPopulator {
 						}else{
 							if (this.random.nextInt(100) < 14){
 								block.setType(Material.LONG_GRASS);
+								block.setData((byte) 0x1);
 								block.setData((byte) ((this.random.nextInt(100) < 85) ? 0x1 : 0x2));
 							}
 						}
