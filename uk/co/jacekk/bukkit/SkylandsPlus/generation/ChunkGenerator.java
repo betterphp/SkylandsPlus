@@ -242,9 +242,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		
 		this.t = this.o.a(this.t, chunkX * 16, chunkZ * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
 		
-		for (int x = 0; x < 16; ++x){
-			for (int z = 0; z < 16; ++z){
-				int i1 = (int) (this.t[x + z * 16] / 3.0D + 3.0D + this.random.nextDouble() * 0.25D);
+		for (int z = 0; z < 16; ++z){
+			for (int x = 0; x < 16; ++x){
+				int i1 = (int) (this.t[z + x * 16] / 3.0D + 3.0D + this.random.nextDouble() * 0.25D);
 				int j1 = -1;
 				
 				int globalX = chunkX * 16 + x;
@@ -270,7 +270,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 				}
 				
 				for (int y = 127; y >= 0; --y){
-					int l1 = z * 16 + x;
+					int l1 = x * 16 + z;
 					int i2 = l1 * 128 + y;
 					
 					byte b3 = blocks[i2];
