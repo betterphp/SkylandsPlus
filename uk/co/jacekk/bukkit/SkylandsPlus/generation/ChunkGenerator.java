@@ -173,7 +173,21 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		
 		this.q = this.a(this.q, chunkX * b0, 0, chunkZ * b0, k, l, i1);
 		
-		byte blockType = (byte) ((world.getEnvironment() == Environment.NORMAL) ? Material.STONE.getId() : Material.NETHERRACK.getId());
+		byte blockType;
+		
+		switch (world.getEnvironment()){
+			case NETHER:
+				blockType = (byte) Material.NETHERRACK.getId();
+			break;
+			
+			case THE_END:
+				blockType = (byte) Material.ENDER_STONE.getId();
+			break;
+			
+			default:
+				blockType = (byte) Material.STONE.getId();
+			break;
+		}
 		
 		for (int j1 = 0; j1 < b0; ++j1){
 			int k1 = 0;
