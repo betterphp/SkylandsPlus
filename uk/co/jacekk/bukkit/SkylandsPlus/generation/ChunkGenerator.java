@@ -60,7 +60,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			break;
 			
 			case THE_END:
-				// TODO: Make this.
+				populators.add(new EndTowerPopulator(world));
 			break;
 			
 			case NETHER:
