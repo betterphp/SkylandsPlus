@@ -10,18 +10,16 @@ import org.bukkit.World.Environment;
 import org.bukkit.craftbukkit.CraftWorld;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.world.WorldInitEvent;
 
 import uk.co.jacekk.bukkit.SkylandsPlus.SkylandsPlus;
 import uk.co.jacekk.bukkit.SkylandsPlus.generation.ChunkGenerator;
+import uk.co.jacekk.bukkit.baseplugin.BaseListener;
 
-public class WorldListener implements Listener {
-	
-	private SkylandsPlus plugin;
+public class WorldListener extends BaseListener<SkylandsPlus> {
 	
 	public WorldListener(SkylandsPlus plugin){
-		this.plugin = plugin;
+		super(plugin);
 	}
 	
 	@EventHandler(priority = EventPriority.NORMAL)

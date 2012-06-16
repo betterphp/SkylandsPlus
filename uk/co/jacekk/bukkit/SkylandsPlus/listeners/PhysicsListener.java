@@ -3,12 +3,17 @@ package uk.co.jacekk.bukkit.SkylandsPlus.listeners;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPhysicsEvent;
 
+import uk.co.jacekk.bukkit.SkylandsPlus.SkylandsPlus;
 import uk.co.jacekk.bukkit.SkylandsPlus.generation.ChunkGenerator;
+import uk.co.jacekk.bukkit.baseplugin.BaseListener;
 
-public class PhysicsListener implements Listener {
+public class PhysicsListener extends BaseListener<SkylandsPlus> {
+	
+	public PhysicsListener(SkylandsPlus plugin){
+		super(plugin);
+	}
 	
 	@EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
 	public void onBlockPhysics(BlockPhysicsEvent event){
