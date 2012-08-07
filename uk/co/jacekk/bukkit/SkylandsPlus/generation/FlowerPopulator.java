@@ -25,7 +25,7 @@ public class FlowerPopulator extends BlockPopulator {
 		Block block, ground;
 		Biome biome;
 		
-		List<Biome> iceBiomes = Arrays.asList(Biome.TUNDRA, Biome.TAIGA, Biome.TAIGA_HILLS, Biome.ICE_PLAINS, Biome.ICE_DESERT, Biome.ICE_MOUNTAINS, Biome.FROZEN_RIVER, Biome.FROZEN_OCEAN);
+		List<Biome> iceBiomes = Arrays.asList(Biome.TAIGA, Biome.TAIGA_HILLS, Biome.ICE_PLAINS, Biome.ICE_MOUNTAINS, Biome.FROZEN_RIVER, Biome.FROZEN_OCEAN);
 		
 		for (x = 0; x < 16; ++x){
 			for (z = 0; z < 16; ++z){

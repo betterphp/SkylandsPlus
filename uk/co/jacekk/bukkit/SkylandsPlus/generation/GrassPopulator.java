@@ -26,11 +26,9 @@ public class GrassPopulator extends BlockPopulator {
 		Biome biome;
 		
 		List<Biome> iceBiomes = Arrays.asList(
-			Biome.TUNDRA,
 			Biome.TAIGA,
 			Biome.TAIGA_HILLS,
 			Biome.ICE_PLAINS,
-			Biome.ICE_DESERT,
 			Biome.ICE_MOUNTAINS,
 			Biome.FROZEN_RIVER,
 			Biome.FROZEN_OCEAN

@@ -6,7 +6,7 @@ import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.EnderCrystal;
-import org.bukkit.entity.EntityType;
+import org.bukkit.entity.EnderDragon;
 import org.bukkit.generator.BlockPopulator;
 
 public class EndTowerPopulator extends BlockPopulator {
@@ -65,7 +65,7 @@ public class EndTowerPopulator extends BlockPopulator {
 				world.spawn(chunk.getBlock(x, y + height, z).getLocation().add(0.5, 0, 0.5), EnderCrystal.class);
 				
 				if (this.random.nextInt(100) < 10){
-					world.spawnCreature(chunk.getBlock(x, y + height + 10, z).getLocation(), EntityType.ENDER_DRAGON);
+					world.spawn(chunk.getBlock(x, y + height + 10, z).getLocation(), EnderDragon.class);
 				}
 			}
 		}
