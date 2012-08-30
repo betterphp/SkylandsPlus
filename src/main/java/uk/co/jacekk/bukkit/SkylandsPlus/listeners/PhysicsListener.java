@@ -7,7 +7,7 @@ import org.bukkit.event.block.BlockPhysicsEvent;
 
 import uk.co.jacekk.bukkit.SkylandsPlus.SkylandsPlus;
 import uk.co.jacekk.bukkit.SkylandsPlus.generation.ChunkGenerator;
-import uk.co.jacekk.bukkit.baseplugin.BaseListener;
+import uk.co.jacekk.bukkit.baseplugin.event.BaseListener;
 
 public class PhysicsListener extends BaseListener<SkylandsPlus> {
 	
