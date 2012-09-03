@@ -8,7 +8,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason;
 
 import uk.co.jacekk.bukkit.SkylandsPlus.SkylandsPlus;
 import uk.co.jacekk.bukkit.SkylandsPlus.generation.ChunkGenerator;
-import uk.co.jacekk.bukkit.baseplugin.event.BaseListener;
+import uk.co.jacekk.bukkit.baseplugin.v1.event.BaseListener;
 
 public class MobSpawnListener extends BaseListener<SkylandsPlus> {
 	

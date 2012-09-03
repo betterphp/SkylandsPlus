@@ -1,6 +1,6 @@
 package uk.co.jacekk.bukkit.SkylandsPlus;
 
-import uk.co.jacekk.bukkit.baseplugin.config.PluginConfigKey;
+import uk.co.jacekk.bukkit.baseplugin.v1.config.PluginConfigKey;
 
 public enum Config implements PluginConfigKey {
 	

@@ -7,8 +7,8 @@ import org.bukkit.generator.ChunkGenerator;
 import uk.co.jacekk.bukkit.SkylandsPlus.listeners.MobSpawnListener;
 import uk.co.jacekk.bukkit.SkylandsPlus.listeners.PhysicsListener;
 import uk.co.jacekk.bukkit.SkylandsPlus.listeners.WorldListener;
-import uk.co.jacekk.bukkit.baseplugin.BasePlugin;
-import uk.co.jacekk.bukkit.baseplugin.config.PluginConfig;
+import uk.co.jacekk.bukkit.baseplugin.v1.BasePlugin;
+import uk.co.jacekk.bukkit.baseplugin.v1.config.PluginConfig;
 
 public class SkylandsPlus extends BasePlugin {
 	

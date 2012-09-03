@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>uk.co.jacekk.bukkit</groupId>
 			<artifactId>baseplugin</artifactId>
-			<version>0.3-SNAPSHOT</version>
+			<version>1.0</version>
 			<scope>compile</scope>
 		</dependency>
 		
