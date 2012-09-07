@@ -114,15 +114,15 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 				if (d2 < 0.0D) d2 = 0.0D;
 				
 				d2 += 0.5D;
-				d3 = d3 * (double) i1 / 16.0D;
+				d3 = d3 * i1 / 16.0D;
 				
 				++l1;
 				
-				double d4 = (double) i1 / 2.0D;
+				double d4 = i1 / 2.0D;
 				
 				for (int k2 = 0; k2 < i1; ++k2){
 					double d5 = 0.0D;
-					double d6 = ((double) k2 - d4) * 8.0D / d2;
+					double d6 = (k2 - d4) * 8.0D / d2;
 					
 					if (d6 < 0.0D) d6 *= -1.0D;
 					
@@ -144,14 +144,14 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 					double d10;
 					
 					if (k2 > i1 - b0){
-						d10 = (double) ((float) (k2 - (i1 - b0)) / ((float) b0 - 1.0F));
+						d10 = (k2 - (i1 - b0)) / (b0 - 1.0F);
 						d5 = d5 * (1.0D - d10) + -30.0D * d10;
 					}
 					
 					b0 = 8;
 					
 					if (k2 < b0){
-						d10 = (double) ((float) (b0 - k2) / ((float) b0 - 1.0F));
+						d10 = (b0 - k2) / (b0 - 1.0F);
 						d5 = d5 * (1.0D - d10) + -30.0D * d10;
 					}
 					
@@ -333,7 +333,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		
 		byte[] blocks = new byte[32768];
 		
-		this.random.setSeed((long) chunkX * 341873128712L + (long) chunkZ * 132897987541L);
+		this.random.setSeed(chunkX * 341873128712L + chunkZ * 132897987541L);
 		
 		this.shapeLand(world, chunkX, chunkZ, blocks);
 		
