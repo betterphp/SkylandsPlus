@@ -1,7 +1,6 @@
 package uk.co.jacekk.bukkit.SkylandsPlus.generation;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -251,7 +250,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		}
 	}
 	
-	private void decorateLand(World world, int chunkX, int chunkZ, byte[] blocks){
+	private void decorateLand(int chunkX, int chunkZ, byte[] blocks, BiomeGrid biomes){
 		double d0 = 0.03125D;
 		
 		this.t = this.o.a(this.t, chunkX * 16, chunkZ * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
@@ -261,10 +260,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 				int i1 = (int) (this.t[z + x * 16] / 3.0D + 3.0D + this.random.nextDouble() * 0.25D);
 				int j1 = -1;
 				
-				int globalX = chunkX * 16 + x;
-				int globalZ = chunkZ * 16 + z;
-				
-				Biome biome = world.getBiome(globalX, globalZ);
+				Biome biome = biomes.getBiome(x, z);
 				
 				byte b1, b2;
 				
@@ -278,8 +274,10 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 					b1 = (byte) Material.GRASS.getId();
 					b2 = (byte) Material.DIRT.getId();
 					
-					if (Arrays.asList(Biome.SWAMPLAND, Biome.MUSHROOM_ISLAND, Biome.MUSHROOM_SHORE).contains(biome)){
-						world.setBiome(globalX, globalZ, Biome.ICE_PLAINS);
+					if (biome == Biome.SWAMPLAND){
+						biomes.setBiome(x, z, Biome.ICE_PLAINS);
+					}else if (biome == Biome.MUSHROOM_ISLAND || biome == Biome.MUSHROOM_SHORE){
+						biomes.setBiome(x, z, Biome.FOREST);
 					}
 				}
 				
@@ -310,7 +308,10 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		}
 	}
 	
-	public byte[] generate(World world, Random random, int chunkX, int chunkZ){
+	@Override
+	public byte[][] generateBlockSections(World world, Random random, int chunkX, int chunkZ, BiomeGrid biomes){
+		Environment environment = world.getEnvironment();
+		
 		if (this.random == null){
 			this.random = new Random(world.getSeed());
 		
@@ -321,9 +322,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			this.a = new NoiseGeneratorOctaves(this.random, 10);
 			this.b = new NoiseGeneratorOctaves(this.random, 16);
 			
-			if (world.getEnvironment() == Environment.NORMAL){
+			if (environment == Environment.NORMAL){
 				this.caveGen = new WorldGenCaves();
-			}else{
+			}else if (environment == Environment.NETHER){
 				this.caveGenNether = new WorldGenCavesHell();
 				this.genNetherFort = new WorldGenNether();
 			}
@@ -344,9 +345,20 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			this.genNetherFort.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
 		}
 		
-		this.decorateLand(world, chunkX, chunkZ, blocks);
+		this.decorateLand(chunkX, chunkZ, blocks, biomes);
 		
-		return blocks;
+		// TODO: Do this in a nice way.
+		byte[][] chunk = new byte[8][4096];
+		
+		for (int x = 0; x < 16; ++x){
+			for (int y = 0; y < 128; ++y){
+				for (int z = 0; z < 16; ++z){
+					chunk[y >> 4][((y & 0xF) << 8) | (z << 4) | x] = blocks[(x * 16 + z) * 128 + y];
+				}
+			}
+		}
+		
+		return chunk;
 	}
 	
 }
