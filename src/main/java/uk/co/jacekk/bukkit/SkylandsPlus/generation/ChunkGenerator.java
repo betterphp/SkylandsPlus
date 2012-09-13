@@ -314,7 +314,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		
 		if (this.random == null){
 			this.random = new Random(world.getSeed());
-		
+			
 			this.k = new NoiseGeneratorOctaves(this.random, 16);
 			this.l = new NoiseGeneratorOctaves(this.random, 16);
 			this.m = new NoiseGeneratorOctaves(this.random, 8);
