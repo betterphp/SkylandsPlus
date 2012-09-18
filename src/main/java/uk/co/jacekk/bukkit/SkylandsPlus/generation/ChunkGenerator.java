@@ -338,9 +338,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		
 		this.shapeLand(world, chunkX, chunkZ, blocks);
 		
-		if (world.getEnvironment() == Environment.NORMAL){
+		if (environment == Environment.NORMAL){
 			this.caveGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
-		}else{
+		}else if (environment == Environment.NETHER){
 			this.caveGenNether.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
 			this.genNetherFort.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
 		}

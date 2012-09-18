@@ -1,4 +1,4 @@
 name: SkylandsPlus
-version: 0.14
+version: 0.14.1
 main: uk.co.jacekk.bukkit.SkylandsPlus.SkylandsPlus
 load: startup
