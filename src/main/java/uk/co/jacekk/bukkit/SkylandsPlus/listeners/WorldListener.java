@@ -14,7 +14,7 @@ import org.bukkit.event.world.WorldInitEvent;
 
 import uk.co.jacekk.bukkit.SkylandsPlus.SkylandsPlus;
 import uk.co.jacekk.bukkit.SkylandsPlus.generation.ChunkGenerator;
-import uk.co.jacekk.bukkit.baseplugin.v1.event.BaseListener;
+import uk.co.jacekk.bukkit.baseplugin.v5.event.BaseListener;
 
 public class WorldListener extends BaseListener<SkylandsPlus> {
 	

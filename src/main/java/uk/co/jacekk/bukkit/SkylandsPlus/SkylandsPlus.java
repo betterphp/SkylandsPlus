@@ -7,15 +7,15 @@ import org.bukkit.generator.ChunkGenerator;
 import uk.co.jacekk.bukkit.SkylandsPlus.listeners.MobSpawnListener;
 import uk.co.jacekk.bukkit.SkylandsPlus.listeners.PhysicsListener;
 import uk.co.jacekk.bukkit.SkylandsPlus.listeners.WorldListener;
-import uk.co.jacekk.bukkit.baseplugin.v1.BasePlugin;
-import uk.co.jacekk.bukkit.baseplugin.v1.config.PluginConfig;
+import uk.co.jacekk.bukkit.baseplugin.v5.BasePlugin;
+import uk.co.jacekk.bukkit.baseplugin.v5.config.PluginConfig;
 
 public class SkylandsPlus extends BasePlugin {
 	
 	public void onEnable(){
 		super.onEnable(true);
 		
-		this.config = new PluginConfig(new File(this.baseDirPath + File.separator + "config.yml"), Config.values(), this.log);
+		this.config = new PluginConfig(new File(this.baseDirPath + File.separator + "config.yml"), Config.class, this.log);
 		
 		if (this.config.getBoolean(Config.PREVENT_SAND_FALLING)){
 			this.pluginManager.registerEvents(new PhysicsListener(this), this);

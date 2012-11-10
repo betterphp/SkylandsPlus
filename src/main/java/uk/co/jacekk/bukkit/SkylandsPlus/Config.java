@@ -1,26 +1,10 @@
 package uk.co.jacekk.bukkit.SkylandsPlus;
 
-import uk.co.jacekk.bukkit.baseplugin.v1.config.PluginConfigKey;
+import uk.co.jacekk.bukkit.baseplugin.v5.config.PluginConfigKey;
 
-public enum Config implements PluginConfigKey {
+public class Config {
 	
-	PREVENT_SAND_FALLING(		"prevent-sand-falling",		true),
-	RESTRICT_MOB_SPAWNING(		"restrict-mob-spawning",	true);
-	
-	private String key;
-	private Object defaultValue;
-	
-	private Config(String key, Object defaultValue){
-		this.key = key;
-		this.defaultValue = defaultValue;
-	}
-	
-	public Object getDefault(){
-		return this.defaultValue;
-	}
-	
-	public String getKey(){
-		return this.key;
-	}
+	public static final PluginConfigKey PREVENT_SAND_FALLING		= new PluginConfigKey("prevent-sand-falling",	true);
+	public static final PluginConfigKey RESTRICT_MOB_SPAWNING		= new PluginConfigKey("restrict-mob-spawning",	true);
 	
 }
