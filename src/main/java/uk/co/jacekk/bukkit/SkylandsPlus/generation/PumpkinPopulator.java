@@ -2,11 +2,11 @@ package uk.co.jacekk.bukkit.SkylandsPlus.generation;
 
 import java.util.Random;
 
-import net.minecraft.server.WorldGenPumpkin;
+import net.minecraft.server.v1_4_5.WorldGenPumpkin;
 
 import org.bukkit.Chunk;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.CraftWorld;
+import org.bukkit.craftbukkit.v1_4_5.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 public class PumpkinPopulator extends BlockPopulator {
@@ -18,7 +18,7 @@ public class PumpkinPopulator extends BlockPopulator {
 	}
 	
 	public void populate(World world, Random random, Chunk chunk){
-		net.minecraft.server.World mcWorld = ((CraftWorld) world).getHandle();
+		net.minecraft.server.v1_4_5.World mcWorld = ((CraftWorld) world).getHandle();
 		
 		int x, y, z;
 		
