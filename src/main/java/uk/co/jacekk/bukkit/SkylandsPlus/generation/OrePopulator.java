@@ -2,12 +2,12 @@ package uk.co.jacekk.bukkit.SkylandsPlus.generation;
 
 import java.util.Random;
 
-import net.minecraft.server.WorldGenMinable;
+import net.minecraft.server.v1_4_5.WorldGenMinable;
 
 import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.craftbukkit.CraftWorld;
+import org.bukkit.craftbukkit.v1_4_5.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 public class OrePopulator extends BlockPopulator {
@@ -19,7 +19,7 @@ public class OrePopulator extends BlockPopulator {
 	}
 	
 	public void populate(World world, Random random, Chunk chunk){
-		net.minecraft.server.World mcWorld = ((CraftWorld) world).getHandle();
+		net.minecraft.server.v1_4_5.World mcWorld = ((CraftWorld) world).getHandle();
 		
 		int x, y, z, i;
 		
