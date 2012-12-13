@@ -54,6 +54,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 				populators.add(new PumpkinPopulator(world));
 				populators.add(new OrePopulator(world));
 				populators.add(new TreePopulator(world));
+				populators.add(new SnowPopulator());
 				populators.add(new MushroomPopulator(world));
 				populators.add(new CactusPopulator(world));
 			break;
