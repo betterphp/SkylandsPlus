@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>uk.co.jacekk.bukkit</groupId>
 	<artifactId>skylandsplus</artifactId>
-	<version>0.14.2-SNAPSHOT</version>
+	<version>0.14.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	
 	<name>SkylandsPlus</name>
@@ -37,7 +37,7 @@
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>craftbukkit</artifactId>
-			<version>1.4.5-R1.0</version>
+			<version>1.4.6-R0.1</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
