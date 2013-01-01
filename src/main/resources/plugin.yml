@@ -1,5 +1,5 @@
-name: ${project.name}
-version: ${project.version}
-main: ${project.groupId}.${project.artifactId}.${project.name}
-website: ${project.url}
+name: "${project.name}"
+version: "${project.version}"
+main: "${project.groupId}.${project.artifactId}.${project.name}"
+website: "${project.url}"
 load: startup
