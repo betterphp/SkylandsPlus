@@ -1,4 +1,5 @@
-name: SkylandsPlus
-version: 0.14.2
-main: uk.co.jacekk.bukkit.SkylandsPlus.SkylandsPlus
+name: ${project.name}
+version: ${project.version}
+main: ${project.groupId}.${project.artifactId}.${project.name}
+website: ${project.url}
 load: startup
