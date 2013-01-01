@@ -1,4 +1,4 @@
-package uk.co.jacekk.bukkit.SkylandsPlus;
+package uk.co.jacekk.bukkit.skylandsplus;
 
 import java.io.File;
 import java.io.IOException;

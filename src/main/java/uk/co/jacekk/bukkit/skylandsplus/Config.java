@@ -1,4 +1,4 @@
-package uk.co.jacekk.bukkit.SkylandsPlus;
+package uk.co.jacekk.bukkit.skylandsplus;
 
 import uk.co.jacekk.bukkit.baseplugin.v7.config.PluginConfigKey;
 

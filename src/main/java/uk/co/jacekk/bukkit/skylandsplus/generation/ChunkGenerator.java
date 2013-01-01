@@ -1,4 +1,4 @@
-package uk.co.jacekk.bukkit.SkylandsPlus.generation;
+package uk.co.jacekk.bukkit.skylandsplus.generation;
 
 import java.util.ArrayList;
 import java.util.List;

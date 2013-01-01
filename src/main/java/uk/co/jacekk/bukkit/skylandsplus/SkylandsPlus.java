@@ -1,14 +1,14 @@
-package uk.co.jacekk.bukkit.SkylandsPlus;
+package uk.co.jacekk.bukkit.skylandsplus;
 
 import java.io.File;
 
 import org.bukkit.generator.ChunkGenerator;
 
-import uk.co.jacekk.bukkit.SkylandsPlus.listeners.MobSpawnListener;
-import uk.co.jacekk.bukkit.SkylandsPlus.listeners.PhysicsListener;
-import uk.co.jacekk.bukkit.SkylandsPlus.listeners.WorldListener;
 import uk.co.jacekk.bukkit.baseplugin.v7.BasePlugin;
 import uk.co.jacekk.bukkit.baseplugin.v7.config.PluginConfig;
+import uk.co.jacekk.bukkit.skylandsplus.listeners.MobSpawnListener;
+import uk.co.jacekk.bukkit.skylandsplus.listeners.PhysicsListener;
+import uk.co.jacekk.bukkit.skylandsplus.listeners.WorldListener;
 
 public class SkylandsPlus extends BasePlugin {
 	
@@ -29,7 +29,7 @@ public class SkylandsPlus extends BasePlugin {
 	}
 	
 	public ChunkGenerator getDefaultWorldGenerator(String worldName, String id){
-		return new uk.co.jacekk.bukkit.SkylandsPlus.generation.ChunkGenerator();
+		return new uk.co.jacekk.bukkit.skylandsplus.generation.ChunkGenerator();
 	}
 	
 }
