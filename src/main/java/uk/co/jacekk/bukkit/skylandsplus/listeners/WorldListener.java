@@ -1,7 +1,6 @@
 package uk.co.jacekk.bukkit.skylandsplus.listeners;
 
-import java.lang.reflect.Field;
-
+import net.minecraft.server.v1_4_6.WorldData;
 import net.minecraft.server.v1_4_6.WorldServer;
 import net.minecraft.server.v1_4_6.WorldType;
 
@@ -13,6 +12,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.world.WorldInitEvent;
 
 import uk.co.jacekk.bukkit.baseplugin.v7.event.BaseListener;
+import uk.co.jacekk.bukkit.baseplugin.v7.util.ReflectionUtils;
 import uk.co.jacekk.bukkit.skylandsplus.SkylandsPlus;
 import uk.co.jacekk.bukkit.skylandsplus.generation.ChunkGenerator;
 
@@ -30,12 +30,7 @@ public class WorldListener extends BaseListener<SkylandsPlus> {
 			WorldServer worldServer = ((CraftWorld) world).getHandle();
 			
 			try{
-				Class<?> worldData = worldServer.worldData.getClass();
-				
-				Field type = worldData.getDeclaredField("type");
-				type.setAccessible(true);
-				
-				type.set(worldServer.worldData, WorldType.NORMAL);
+				ReflectionUtils.setFieldValue(WorldData.class, "type", worldServer.worldData, WorldType.NORMAL);
 				
 				plugin.log.info("The world type of '" + world.getName() + "' has been set to to normal.");
 			}catch (Exception e){
