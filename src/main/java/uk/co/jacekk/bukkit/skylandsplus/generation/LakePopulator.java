@@ -3,14 +3,14 @@ package uk.co.jacekk.bukkit.skylandsplus.generation;
 import java.util.Arrays;
 import java.util.Random;
 
-import net.minecraft.server.v1_4_6.WorldGenLakes;
-import net.minecraft.server.v1_4_6.WorldGenReed;
+import net.minecraft.server.v1_4_R1.WorldGenLakes;
+import net.minecraft.server.v1_4_R1.WorldGenReed;
 
 import org.bukkit.Chunk;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
-import org.bukkit.craftbukkit.v1_4_6.CraftWorld;
+import org.bukkit.craftbukkit.v1_4_R1.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 public class LakePopulator extends BlockPopulator {
@@ -22,7 +22,7 @@ public class LakePopulator extends BlockPopulator {
 	}
 	
 	public void populate(World world, Random random, Chunk chunk){
-		net.minecraft.server.v1_4_6.World mcWorld = ((CraftWorld) world).getHandle();
+		net.minecraft.server.v1_4_R1.World mcWorld = ((CraftWorld) world).getHandle();
 		
 		int x, y, z;
 		

@@ -4,8 +4,8 @@ import java.io.File;
 
 import org.bukkit.generator.ChunkGenerator;
 
-import uk.co.jacekk.bukkit.baseplugin.v7.BasePlugin;
-import uk.co.jacekk.bukkit.baseplugin.v7.config.PluginConfig;
+import uk.co.jacekk.bukkit.baseplugin.v8.BasePlugin;
+import uk.co.jacekk.bukkit.baseplugin.v8.config.PluginConfig;
 import uk.co.jacekk.bukkit.skylandsplus.listeners.MobSpawnListener;
 import uk.co.jacekk.bukkit.skylandsplus.listeners.PhysicsListener;
 import uk.co.jacekk.bukkit.skylandsplus.listeners.WorldListener;

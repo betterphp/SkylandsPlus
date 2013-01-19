@@ -1,18 +1,18 @@
 package uk.co.jacekk.bukkit.skylandsplus.listeners;
 
-import net.minecraft.server.v1_4_6.WorldData;
-import net.minecraft.server.v1_4_6.WorldServer;
-import net.minecraft.server.v1_4_6.WorldType;
+import net.minecraft.server.v1_4_R1.WorldData;
+import net.minecraft.server.v1_4_R1.WorldServer;
+import net.minecraft.server.v1_4_R1.WorldType;
 
 import org.bukkit.World;
 import org.bukkit.World.Environment;
-import org.bukkit.craftbukkit.v1_4_6.CraftWorld;
+import org.bukkit.craftbukkit.v1_4_R1.CraftWorld;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.world.WorldInitEvent;
 
-import uk.co.jacekk.bukkit.baseplugin.v7.event.BaseListener;
-import uk.co.jacekk.bukkit.baseplugin.v7.util.ReflectionUtils;
+import uk.co.jacekk.bukkit.baseplugin.v8.event.BaseListener;
+import uk.co.jacekk.bukkit.baseplugin.v8.util.ReflectionUtils;
 import uk.co.jacekk.bukkit.skylandsplus.SkylandsPlus;
 import uk.co.jacekk.bukkit.skylandsplus.generation.ChunkGenerator;
 
