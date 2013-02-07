@@ -1,6 +1,6 @@
 package uk.co.jacekk.bukkit.skylandsplus;
 
-import uk.co.jacekk.bukkit.baseplugin.v8.config.PluginConfigKey;
+import uk.co.jacekk.bukkit.baseplugin.v9.config.PluginConfigKey;
 
 public class Config {
 	
