@@ -4,10 +4,13 @@ import java.io.File;
 
 import org.bukkit.generator.ChunkGenerator;
 
+import com.comphenix.protocol.ProtocolLibrary;
+
 import uk.co.jacekk.bukkit.baseplugin.v9.BasePlugin;
 import uk.co.jacekk.bukkit.baseplugin.v9.config.PluginConfig;
 import uk.co.jacekk.bukkit.skylandsplus.listeners.MobSpawnListener;
 import uk.co.jacekk.bukkit.skylandsplus.listeners.PhysicsListener;
+import uk.co.jacekk.bukkit.skylandsplus.listeners.VoidFixListener;
 import uk.co.jacekk.bukkit.skylandsplus.listeners.WorldListener;
 
 public class SkylandsPlus extends BasePlugin {
@@ -23,6 +26,10 @@ public class SkylandsPlus extends BasePlugin {
 		
 		if (this.config.getBoolean(Config.RESTRICT_MOB_SPAWNING)){
 			this.pluginManager.registerEvents(new MobSpawnListener(this), this);
+		}
+		
+		if (this.config.getBoolean(Config.FIX_BLACK_VOID) && this.pluginManager.isPluginEnabled("ProtocolLib")){
+			ProtocolLibrary.getProtocolManager().addPacketListener(new VoidFixListener(this));
 		}
 		
 		this.pluginManager.registerEvents(new WorldListener(this), this);

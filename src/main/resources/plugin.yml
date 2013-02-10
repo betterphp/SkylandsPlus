@@ -3,3 +3,4 @@ version: "${project.version}"
 main: "${project.groupId}.${project.artifactId}.${project.name}"
 website: "${project.url}"
 load: startup
+softdepend: [ProtocolLib]
