@@ -6,8 +6,8 @@ import org.bukkit.generator.ChunkGenerator;
 
 import com.comphenix.protocol.ProtocolLibrary;
 
-import uk.co.jacekk.bukkit.baseplugin.v9.BasePlugin;
-import uk.co.jacekk.bukkit.baseplugin.v9.config.PluginConfig;
+import uk.co.jacekk.bukkit.baseplugin.v9_1.BasePlugin;
+import uk.co.jacekk.bukkit.baseplugin.v9_1.config.PluginConfig;
 import uk.co.jacekk.bukkit.skylandsplus.listeners.MobSpawnListener;
 import uk.co.jacekk.bukkit.skylandsplus.listeners.PhysicsListener;
 import uk.co.jacekk.bukkit.skylandsplus.listeners.VoidFixListener;
