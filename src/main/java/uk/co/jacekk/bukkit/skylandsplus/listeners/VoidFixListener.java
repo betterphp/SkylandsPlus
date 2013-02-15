@@ -15,7 +15,7 @@ import com.comphenix.protocol.injector.GamePhase;
 public class VoidFixListener extends PacketAdapter {
 	
 	public VoidFixListener(SkylandsPlus plugin){
-		super(plugin, ConnectionSide.BOTH, ListenerPriority.NORMAL, GamePhase.LOGIN, Packets.Server.LOGIN);
+		super(plugin, ConnectionSide.SERVER_SIDE, ListenerPriority.NORMAL, GamePhase.LOGIN, Packets.Server.LOGIN);
 	}
 	
 	@Override
