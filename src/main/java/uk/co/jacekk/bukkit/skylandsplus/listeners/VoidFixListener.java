@@ -1,7 +1,7 @@
 package uk.co.jacekk.bukkit.skylandsplus.listeners;
 
-import net.minecraft.server.v1_5_R1.Packet1Login;
-import net.minecraft.server.v1_5_R1.WorldType;
+import net.minecraft.server.v1_5_R2.Packet1Login;
+import net.minecraft.server.v1_5_R2.WorldType;
 import uk.co.jacekk.bukkit.skylandsplus.SkylandsPlus;
 import uk.co.jacekk.bukkit.skylandsplus.generation.ChunkGenerator;
 
