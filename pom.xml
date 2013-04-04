@@ -2,13 +2,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>uk.co.jacekk.bukkit</groupId>
 	<artifactId>skylandsplus</artifactId>
-	<version>0.15.2-SNAPSHOT</version>
-	
 	<name>SkylandsPlus</name>
+	<version>0.15.2-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<url>http://dev.bukkit.org/server-mods/skylandsplus/</url>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<upload.dbo.category>server-mods</upload.dbo.category>
+		<upload.dbo.slug>skylandsplus</upload.dbo.slug>
 	</properties>
 	
 	<repositories>
