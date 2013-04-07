@@ -12,6 +12,9 @@
 		
 		<upload.dbo.category>server-mods</upload.dbo.category>
 		<upload.dbo.slug>skylandsplus</upload.dbo.slug>
+		
+		<baseplugin.version>10.0</baseplugin.version>
+		<baseplugin.package>10_0</baseplugin.package>
 	</properties>
 	
 	<repositories>
@@ -30,14 +33,14 @@
 		<dependency>
 			<groupId>uk.co.jacekk.bukkit</groupId>
 			<artifactId>baseplugin</artifactId>
-			<version>9.1</version>
+			<version>${baseplugin.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>craftbukkit</artifactId>
-			<version>1.5.1-R0.1-SNAPSHOT</version>
+			<version>1.5.1-R0.1</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
@@ -79,6 +82,12 @@
 							<include>uk.co.jacekk.bukkit:baseplugin</include>
 						</includes>
 					</artifactSet>
+					<relocations>
+						<relocation>
+							<pattern>uk.co.jacekk.bukkit.baseplugin</pattern>
+							<shadedPattern>uk.co.jacekk.bukkit.baseplugin.v${baseplugin.package}</shadedPattern>
+						</relocation>
+					</relocations>
 				</configuration>
 			</plugin>
 			
