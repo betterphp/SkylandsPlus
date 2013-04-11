@@ -47,7 +47,7 @@ public class TreePopulator extends BlockPopulator {
 							}else if (biome == Biome.JUNGLE || biome == Biome.JUNGLE_HILLS){
 								if (this.random.nextInt(1000) < 75){
 									world.generateTree(block.getLocation(), TreeType.JUNGLE);
-								}else if (this.random.nextInt(1000) < 300){
+								}else{
 									world.generateTree(block.getLocation(), TreeType.JUNGLE_BUSH);
 								}
 							}else if (biome != Biome.DESERT && biome != Biome.DESERT_HILLS){

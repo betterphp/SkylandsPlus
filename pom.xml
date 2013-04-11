@@ -13,8 +13,8 @@
 		<upload.dbo.category>server-mods</upload.dbo.category>
 		<upload.dbo.slug>skylandsplus</upload.dbo.slug>
 		
-		<baseplugin.version>10.0</baseplugin.version>
-		<baseplugin.package>10_0</baseplugin.package>
+		<baseplugin.version>10.1</baseplugin.version>
+		<baseplugin.package>10_1</baseplugin.package>
 	</properties>
 	
 	<repositories>
