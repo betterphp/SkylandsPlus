@@ -1,12 +1,12 @@
 package uk.co.jacekk.bukkit.skylandsplus.listeners;
 
-import net.minecraft.server.v1_5_R2.WorldData;
-import net.minecraft.server.v1_5_R2.WorldServer;
-import net.minecraft.server.v1_5_R2.WorldType;
+import net.minecraft.server.v1_5_R3.WorldData;
+import net.minecraft.server.v1_5_R3.WorldServer;
+import net.minecraft.server.v1_5_R3.WorldType;
 
 import org.bukkit.World;
 import org.bukkit.World.Environment;
-import org.bukkit.craftbukkit.v1_5_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_5_R3.CraftWorld;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.world.WorldInitEvent;
