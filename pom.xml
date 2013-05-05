@@ -3,7 +3,7 @@
 	<groupId>uk.co.jacekk.bukkit</groupId>
 	<artifactId>skylandsplus</artifactId>
 	<name>SkylandsPlus</name>
-	<version>0.15.3-SNAPSHOT</version>
+	<version>0.15.3</version>
 	<packaging>jar</packaging>
 	<url>http://dev.bukkit.org/server-mods/skylandsplus/</url>
 	
