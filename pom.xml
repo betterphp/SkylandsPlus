@@ -13,8 +13,8 @@
 		<upload.dbo.category>server-mods</upload.dbo.category>
 		<upload.dbo.slug>skylandsplus</upload.dbo.slug>
 		
-		<baseplugin.version>10.1</baseplugin.version>
-		<baseplugin.package>10_1</baseplugin.package>
+		<baseplugin.version>11.1</baseplugin.version>
+		<baseplugin.package>11_1</baseplugin.package>
 	</properties>
 	
 	<repositories>
@@ -98,6 +98,22 @@
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+						<manifestEntries>
+							<Name>${project.name}</Name>
+							<Version>${project.version}</Version>
+							<Build-Number>${BUILD_NUMBER}</Build-Number>
+						</manifestEntries>
+					</archive>
 				</configuration>
 			</plugin>
 		</plugins>
