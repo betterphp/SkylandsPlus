@@ -48,15 +48,8 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		
 		switch (world.getEnvironment()){
 			case NORMAL:
-				populators.add(new LakePopulator(world));
-				populators.add(new GrassPopulator(world));
-				populators.add(new FlowerPopulator(world));
-				populators.add(new PumpkinPopulator(world));
-				populators.add(new OrePopulator(world));
-				populators.add(new TreePopulator(world));
+				populators.add(new BiomePopulator());
 				populators.add(new SnowPopulator());
-				populators.add(new MushroomPopulator(world));
-				populators.add(new CactusPopulator(world));
 			break;
 			
 			case THE_END:
