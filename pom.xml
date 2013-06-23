@@ -5,16 +5,16 @@
 	<name>SkylandsPlus</name>
 	<version>0.15.3</version>
 	<packaging>jar</packaging>
-	<url>http://dev.bukkit.org/server-mods/skylandsplus/</url>
+	<url>http://dev.bukkit.org/bukkit-plugins/skylandsplus/</url>
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		
-		<upload.dbo.category>server-mods</upload.dbo.category>
+		<upload.dbo.category>bukkit-plugins</upload.dbo.category>
 		<upload.dbo.slug>skylandsplus</upload.dbo.slug>
 		
-		<baseplugin.version>11.1</baseplugin.version>
-		<baseplugin.package>11_1</baseplugin.package>
+		<baseplugin.version>12</baseplugin.version>
+		<baseplugin.package>12</baseplugin.package>
 	</properties>
 	
 	<repositories>
@@ -40,7 +40,7 @@
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>craftbukkit</artifactId>
-			<version>1.5.2-R0.1</version>
+			<version>1.5.2-R1.0</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
