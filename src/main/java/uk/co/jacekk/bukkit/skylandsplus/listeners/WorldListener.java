@@ -34,8 +34,7 @@ public class WorldListener extends BaseListener<SkylandsPlus> {
 				
 				plugin.log.info("The world type of '" + world.getName() + "' has been set to to normal.");
 			}catch (Exception e){
-				plugin.log.info("Could not change the world type of '" + world.getName() + "'.");
-				e.printStackTrace();
+				plugin.log.info("Could not change the world type of '" + world.getName() + "': " + e.getMessage());
 			}
 		}
 	}
