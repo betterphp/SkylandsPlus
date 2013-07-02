@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.server.v1_5_R3.NoiseGeneratorOctaves;
-import net.minecraft.server.v1_5_R3.WorldGenCaves;
-import net.minecraft.server.v1_5_R3.WorldGenCavesHell;
-import net.minecraft.server.v1_5_R3.WorldGenNether;
+import net.minecraft.server.v1_6_R1.NoiseGeneratorOctaves;
+import net.minecraft.server.v1_6_R1.WorldGenCaves;
+import net.minecraft.server.v1_6_R1.WorldGenCavesHell;
+import net.minecraft.server.v1_6_R1.WorldGenNether;
 
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
-import org.bukkit.craftbukkit.v1_5_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_6_R1.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
@@ -324,7 +324,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			}
 		}
 		
-		net.minecraft.server.v1_5_R3.World mcWorld = ((CraftWorld) world).getHandle();
+		net.minecraft.server.v1_6_R1.World mcWorld = ((CraftWorld) world).getHandle();
 		
 		byte[] blocks = new byte[32768];
 		
