@@ -22,9 +22,6 @@ import org.bukkit.block.Biome;
 import org.bukkit.craftbukkit.v1_6_R1.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
-/*import uk.co.jacekk.bukkit.baseplugin.config.PluginConfig;
-import uk.co.jacekk.bukkit.skylandsplus.Config;*/
-
 public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 
     private int offset, liquid;
@@ -117,8 +114,6 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			}
        }
     }
-	
-	//private PluginConfig config;
 	
 	private Random random;
 	
