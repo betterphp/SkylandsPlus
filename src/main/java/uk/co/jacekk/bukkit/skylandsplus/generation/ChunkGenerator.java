@@ -23,97 +23,6 @@ import org.bukkit.craftbukkit.v1_6_R1.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
-
-    private int offset, liquid;
-    private boolean only, canyon, stronghold, mineshaft, village, largefeature, bedrock;
-    private boolean no_plains, no_desert, no_forest, no_jungle, no_taiga, no_ice, no_ocean;
-    private boolean no_mushroom = true;
-    private boolean no_swampland = true;
-    private Biome onlybiome, plains, desert, forest, jungle, taiga, ice, ocean;
-    private Biome mushroom = Biome.FOREST;
-    private Biome swampland = Biome.ICE_PLAINS;
-	byte liquid_id;
-    
-	public ChunkGenerator(String id)
-	{
-		String tokens[] = id.split("[,]");
-		for (int i=0; i < tokens.length; i++)
-        {
-			if(tokens[i].matches("offset={1}-?\\d{1,3}")){
-				offset = Integer.parseInt(tokens[i].substring(7));
-			}else if(tokens[i].equals("canyon")){
-				canyon = true;
-			}else if(tokens[i].equals("stronghold")){
-				stronghold = true;
-			}else if(tokens[i].equals("mineshaft")){
-				mineshaft = true;
-			}else if(tokens[i].equals("village")){
-				village = true;
-			}else if(tokens[i].equals("largefeatures")){
-				largefeature = true;
-			}else if(tokens[i].equals("bedrock")){
-				bedrock = true;
-			}else if(tokens[i].equals("no-desert")){
-				no_desert = true;
-				desert = Biome.PLAINS;
-			}else if(tokens[i].equals("no-forest")){
-				no_forest = true;
-				forest = Biome.PLAINS;
-			}else if(tokens[i].equals("no-jungle")){
-				no_jungle = true;
-				jungle = Biome.PLAINS;
-			}else if(tokens[i].equals("no-taiga")){
-				no_taiga = true;
-				taiga = Biome.PLAINS;
-			}else if(tokens[i].equals("no-ice")){
-				no_ice = true;
-				ice = Biome.PLAINS;
-			}else if(tokens[i].equals("no-ocean")){
-				no_ocean = true;
-				ocean = Biome.PLAINS;
-			}else if(tokens[i]=="mushroom"){
-				no_mushroom = false;
-			}else if(tokens[i]=="swampland"){
-				no_swampland = false;
-			}else if(tokens[i].matches("only={1}[A-Z_]+")){
-				only = true;
-				onlybiome = Biome.valueOf(tokens[i].substring(5));
-			}else if(tokens[i].matches("plains={1}[A-Z_]+")){
-				no_plains = true;
-				plains = Biome.valueOf(tokens[i].substring(7));
-			}else if(tokens[i].matches("desert={1}[A-Z_]+")){
-				no_desert = true;
-				desert = Biome.valueOf(tokens[i].substring(7));
-			}else if(tokens[i].matches("forest={1}[A-Z_]+")){
-				no_forest = true;
-				forest = Biome.valueOf(tokens[i].substring(7));
-			}else if(tokens[i].matches("jungle={1}[A-Z_]+")){
-				no_jungle = true;
-				jungle = Biome.valueOf(tokens[i].substring(7));
-			}else if(tokens[i].matches("taiga={1}[A-Z_]+")){
-				no_taiga = true;
-				taiga = Biome.valueOf(tokens[i].substring(6));
-			}else if(tokens[i].matches("ice={1}[A-Z_]+")){
-				no_ice = true;
-				ice = Biome.valueOf(tokens[i].substring(4));
-			}else if(tokens[i].matches("mushroom={1}[A-Z_]+")){
-				no_mushroom = true;
-				mushroom = Biome.valueOf(tokens[i].substring(9));
-			}else if(tokens[i].matches("swampland={1}[A-Z_]+")){
-				no_swampland = true;
-				swampland = Biome.valueOf(tokens[i].substring(10));
-			}else if(tokens[i].matches("ocean={1}[A-Z_]+")){
-				no_ocean = true;
-				ocean = Biome.valueOf(tokens[i].substring(5));
-			}else if(tokens[i].matches("water={1}\\d{1,3}")){
-				liquid = Integer.parseInt(tokens[i].substring(6))+1;
-				liquid_id=(byte)Block.WATER.id;
-			}else if(tokens[i].matches("lava={1}\\d{1,3}")){
-				liquid = Integer.parseInt(tokens[i].substring(5))+1;
-				liquid_id=(byte)Block.LAVA.id;
-			}
-       }
-    }
 	
 	private Random random;
 	
@@ -134,10 +43,10 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 	
 	private WorldGenCavesHell caveGenNether;
 	private WorldGenNether genNetherFort;
-
+	
 	private double[] q;
 	private double[] t = new double[256];
-
+	
 	double[] d;
 	double[] e;
 	double[] f;
@@ -145,6 +54,96 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 	double[] h;
 	
 	int[][] i = new int[32][32];
+	
+	private int offset, liquid;
+	private boolean only, canyon, stronghold, mineshaft, village, largefeature, bedrock;
+	private boolean no_plains, no_desert, no_forest, no_jungle, no_taiga, no_ice, no_ocean;
+	private boolean no_mushroom = true;
+	private boolean no_swampland = true;
+	private Biome onlybiome, plains, desert, forest, jungle, taiga, ice, ocean;
+	private Biome mushroom = Biome.FOREST;
+	private Biome swampland = Biome.ICE_PLAINS;
+	byte liquid_id;
+	
+	public ChunkGenerator(String id){
+		String tokens[] = id.split("[,]");
+		
+		for (int i = 0; i < tokens.length; i++){
+			if (tokens[i].matches("offset={1}-?\\d{1,3}")){
+				offset = Integer.parseInt(tokens[i].substring(7));
+			}else if (tokens[i].equals("canyon")){
+				canyon = true;
+			}else if (tokens[i].equals("stronghold")){
+				stronghold = true;
+			}else if (tokens[i].equals("mineshaft")){
+				mineshaft = true;
+			}else if (tokens[i].equals("village")){
+				village = true;
+			}else if (tokens[i].equals("largefeatures")){
+				largefeature = true;
+			}else if (tokens[i].equals("bedrock")){
+				bedrock = true;
+			}else if (tokens[i].equals("no-desert")){
+				no_desert = true;
+				desert = Biome.PLAINS;
+			}else if (tokens[i].equals("no-forest")){
+				no_forest = true;
+				forest = Biome.PLAINS;
+			}else if (tokens[i].equals("no-jungle")){
+				no_jungle = true;
+				jungle = Biome.PLAINS;
+			}else if (tokens[i].equals("no-taiga")){
+				no_taiga = true;
+				taiga = Biome.PLAINS;
+			}else if (tokens[i].equals("no-ice")){
+				no_ice = true;
+				ice = Biome.PLAINS;
+			}else if (tokens[i].equals("no-ocean")){
+				no_ocean = true;
+				ocean = Biome.PLAINS;
+			}else if (tokens[i] == "mushroom"){
+				no_mushroom = false;
+			}else if (tokens[i] == "swampland"){
+				no_swampland = false;
+			}else if (tokens[i].matches("only={1}[A-Z_]+")){
+				only = true;
+				onlybiome = Biome.valueOf(tokens[i].substring(5));
+			}else if (tokens[i].matches("plains={1}[A-Z_]+")){
+				no_plains = true;
+				plains = Biome.valueOf(tokens[i].substring(7));
+			}else if (tokens[i].matches("desert={1}[A-Z_]+")){
+				no_desert = true;
+				desert = Biome.valueOf(tokens[i].substring(7));
+			}else if (tokens[i].matches("forest={1}[A-Z_]+")){
+				no_forest = true;
+				forest = Biome.valueOf(tokens[i].substring(7));
+			}else if (tokens[i].matches("jungle={1}[A-Z_]+")){
+				no_jungle = true;
+				jungle = Biome.valueOf(tokens[i].substring(7));
+			}else if (tokens[i].matches("taiga={1}[A-Z_]+")){
+				no_taiga = true;
+				taiga = Biome.valueOf(tokens[i].substring(6));
+			}else if (tokens[i].matches("ice={1}[A-Z_]+")){
+				no_ice = true;
+				ice = Biome.valueOf(tokens[i].substring(4));
+			}else if (tokens[i].matches("mushroom={1}[A-Z_]+")){
+				no_mushroom = true;
+				mushroom = Biome.valueOf(tokens[i].substring(9));
+			}else if (tokens[i].matches("swampland={1}[A-Z_]+")){
+				no_swampland = true;
+				swampland = Biome.valueOf(tokens[i].substring(10));
+			}else if (tokens[i].matches("ocean={1}[A-Z_]+")){
+				no_ocean = true;
+				ocean = Biome.valueOf(tokens[i].substring(5));
+			}else if (tokens[i].matches("water={1}\\d{1,3}")){
+				liquid = Integer.parseInt(tokens[i].substring(6)) + 1;
+				liquid_id = (byte) Block.WATER.id;
+			}else if (tokens[i].matches("lava={1}\\d{1,3}")){
+				liquid = Integer.parseInt(tokens[i].substring(5)) + 1;
+				liquid_id = (byte) Block.LAVA.id;
+			}
+		}
+	}
 	
 	public List<BlockPopulator> getDefaultPopulators(World world){
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
@@ -194,20 +193,24 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			for (int j2 = 0; j2 < j1; ++j2){
 				double d2 = (this.g[l1] + 256.0D) / 512.0D;
 				
-				if (d2 > 1.0D) d2 = 1.0D;
+				if (d2 > 1.0D)
+					d2 = 1.0D;
 				
 				double d3 = this.h[l1] / 8000.0D;
 				
-				if (d3 < 0.0D) d3 = -d3 * 0.3D;
+				if (d3 < 0.0D)
+					d3 = -d3 * 0.3D;
 				
 				d3 = d3 * 3.0D - 2.0D;
 				
-				if (d3 > 1.0D) d3 = 1.0D;
+				if (d3 > 1.0D)
+					d3 = 1.0D;
 				
 				d3 /= 8.0D;
 				d3 = 0.0D;
 				
-				if (d2 < 0.0D) d2 = 0.0D;
+				if (d2 < 0.0D)
+					d2 = 0.0D;
 				
 				d2 += 0.5D;
 				d3 = d3 * i1 / 16.0D;
@@ -220,7 +223,8 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 					double d5 = 0.0D;
 					double d6 = (k2 - d4) * 8.0D / d2;
 					
-					if (d6 < 0.0D) d6 *= -1.0D;
+					if (d6 < 0.0D)
+						d6 *= -1.0D;
 					
 					double d7 = this.e[k1] / 512.0D;
 					double d8 = this.f[k1] / 512.0D;
@@ -289,7 +293,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			
 			while (k1 < b0){
 				int l1 = 0;
-			
+				
 				while (true){
 					if (l1 >= 128 / 4){
 						++k1;
@@ -313,7 +317,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 						double d12 = (d3 - d1) * d9;
 						double d13 = (d4 - d2) * d9;
 						
-						for (int j2 = 0; j2 < 8; ++j2){	
+						for (int j2 = 0; j2 < 8; ++j2){
 							int i3 = j2 + j1 * 8 << 11 | 0 + k1 * 8 << 7 | l1 * 4 + i2;
 							
 							int j3 = 1 << 7;
@@ -360,60 +364,60 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 				
 				byte b1, b2;
 				
-				if(only==true){
+				if (only == true){
 					biomes.setBiome(x, z, onlybiome);
 					biome = onlybiome;
 				}else{
-					if(no_plains==true){
-						if(biome == Biome.PLAINS){
+					if (no_plains == true){
+						if (biome == Biome.PLAINS){
 							biomes.setBiome(x, z, plains);
 							biome = plains;
 						}
 					}
-					if(no_desert==true){
-						if(biome == Biome.DESERT || biome == Biome.DESERT_HILLS){
+					if (no_desert == true){
+						if (biome == Biome.DESERT || biome == Biome.DESERT_HILLS){
 							biomes.setBiome(x, z, desert);
 							biome = desert;
 						}
 					}
-					if(no_forest==true){
-						if(biome == Biome.FOREST || biome == Biome.FOREST_HILLS){
+					if (no_forest == true){
+						if (biome == Biome.FOREST || biome == Biome.FOREST_HILLS){
 							biomes.setBiome(x, z, forest);
 							biome = forest;
 						}
 					}
-					if(no_jungle==true){
-						if(biome == Biome.JUNGLE || biome == Biome.JUNGLE_HILLS){
+					if (no_jungle == true){
+						if (biome == Biome.JUNGLE || biome == Biome.JUNGLE_HILLS){
 							biomes.setBiome(x, z, jungle);
 							biome = jungle;
 						}
 					}
-					if(no_taiga==true){
-						if(biome == Biome.TAIGA || biome == Biome.TAIGA_HILLS){
+					if (no_taiga == true){
+						if (biome == Biome.TAIGA || biome == Biome.TAIGA_HILLS){
 							biomes.setBiome(x, z, taiga);
 							biome = taiga;
 						}
 					}
-					if(no_ice==true){
-						if(biome == Biome.ICE_PLAINS || biome == Biome.ICE_MOUNTAINS){
+					if (no_ice == true){
+						if (biome == Biome.ICE_PLAINS || biome == Biome.ICE_MOUNTAINS){
 							biomes.setBiome(x, z, ice);
 							biome = ice;
 						}
 					}
-					if(no_mushroom==true){
-						if(biome == Biome.MUSHROOM_ISLAND || biome == Biome.MUSHROOM_SHORE){
+					if (no_mushroom == true){
+						if (biome == Biome.MUSHROOM_ISLAND || biome == Biome.MUSHROOM_SHORE){
 							biomes.setBiome(x, z, mushroom);
 							biome = mushroom;
 						}
 					}
-					if(no_swampland==true){
-						if(biome == Biome.SWAMPLAND){
+					if (no_swampland == true){
+						if (biome == Biome.SWAMPLAND){
 							biomes.setBiome(x, z, swampland);
 							biome = swampland;
 						}
 					}
-					if(no_ocean==true){
-						if(biome == Biome.OCEAN){
+					if (no_ocean == true){
+						if (biome == Biome.OCEAN){
 							biomes.setBiome(x, z, ocean);
 							biome = ocean;
 						}
@@ -433,7 +437,6 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 					b1 = (byte) Material.GRASS.getId();
 					b2 = (byte) Material.DIRT.getId();
 				}
-
 				
 				for (int y = 127; y >= 0; --y){
 					int l1 = x * 16 + z;
@@ -483,7 +486,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 				this.mineshaftGen = new WorldGenMineshaft();
 				this.villageGen = new WorldGenVillage();
 				this.largefeatureGen = new WorldGenLargeFeature();
-
+				
 			}else if (environment == Environment.NETHER){
 				this.caveGenNether = new WorldGenCavesHell();
 				this.genNetherFort = new WorldGenNether();
@@ -498,31 +501,37 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		
 		this.shapeLand(world, chunkX, chunkZ, blocks);
 		
-		
-		
 		if (environment == Environment.NORMAL){
 			this.caveGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
 			
-			if(canyon==true){this.canyonGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);}
-			if(stronghold==true){this.strongholdGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);}
-			if(mineshaft==true){this.mineshaftGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);}
-			if(village==true){this.villageGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);}
-			if(largefeature==true){this.largefeatureGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);}
-			
+			if (canyon == true){
+				this.canyonGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
+			}
+			if (stronghold == true){
+				this.strongholdGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
+			}
+			if (mineshaft == true){
+				this.mineshaftGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
+			}
+			if (village == true){
+				this.villageGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
+			}
+			if (largefeature == true){
+				this.largefeatureGen.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
+			}
 		}else if (environment == Environment.NETHER){
 			this.caveGenNether.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
 			this.genNetherFort.a(mcWorld.chunkProvider, mcWorld, chunkX, chunkZ, blocks);
 		}
 		
 		this.decorateLand(chunkX, chunkZ, blocks, biomes);
-
+		
 		int cut_top = 0;
 		int cut_bottom = 0;
 		
-		if(offset > 128){
+		if (offset > 128){
 			cut_top = offset - 128;
-		}
-		else if(offset < 0){
+		}else if (offset < 0){
 			cut_bottom = -offset;
 		}
 		
@@ -531,15 +540,15 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		// TODO: Do this in a nice way.
 		// Yes. Do it. :3
 		for (int x = 0; x < 16; ++x){
-			for (int y = 0+cut_bottom; y < 128-cut_top; ++y){
+			for (int y = 0 + cut_bottom; y < 128 - cut_top; ++y){
 				for (int z = 0; z < 16; ++z){
-						chunk[y+offset >> 4][((y+offset & 0xF) << 8) | (z << 4) | x] = blocks[(x * 16 + z) * 128 + y];
-						if(bedrock==true&&y==0){
-							chunk[y-cut_bottom >> 4][((y-cut_bottom & 0xF) << 8) | (z << 4) | x] = (byte)Block.BEDROCK.id;
-						}
-						if(liquid>0 && y<=liquid-1+cut_bottom && chunk[y-cut_bottom >> 4][((y-cut_bottom & 0xF) << 8) | (z << 4) | x] == 0){
-							chunk[y-cut_bottom >> 4][((y-cut_bottom & 0xF) << 8) | (z << 4) | x] = liquid_id;
-						}
+					chunk[y + offset >> 4][((y + offset & 0xF) << 8) | (z << 4) | x] = blocks[(x * 16 + z) * 128 + y];
+					if (bedrock == true && y == 0){
+						chunk[y - cut_bottom >> 4][((y - cut_bottom & 0xF) << 8) | (z << 4) | x] = (byte) Block.BEDROCK.id;
+					}
+					if (liquid > 0 && y <= liquid - 1 + cut_bottom && chunk[y - cut_bottom >> 4][((y - cut_bottom & 0xF) << 8) | (z << 4) | x] == 0){
+						chunk[y - cut_bottom >> 4][((y - cut_bottom & 0xF) << 8) | (z << 4) | x] = liquid_id;
+					}
 				}
 			}
 		}

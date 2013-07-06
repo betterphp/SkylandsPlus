@@ -10,9 +10,10 @@ import uk.co.jacekk.bukkit.skylandsplus.listeners.MobSpawnListener;
 import uk.co.jacekk.bukkit.skylandsplus.listeners.PhysicsListener;
 
 public class SkylandsPlus extends BasePlugin {
+	
 	public void onEnable(){
 		super.onEnable(true);
-
+		
 		this.config = new PluginConfig(new File(this.baseDirPath + File.separator + "config.yml"), Config.class, this.log);
 		
 		if (this.config.getBoolean(Config.PREVENT_SAND_FALLING)){
@@ -23,10 +24,14 @@ public class SkylandsPlus extends BasePlugin {
 			this.pluginManager.registerEvents(new MobSpawnListener(this), this);
 		}
 	}
+	
 	@Override
 	public ChunkGenerator getDefaultWorldGenerator(String worldName, String id){
-		 if(id == "" || id == null) id = "offset=0";
-		 return new uk.co.jacekk.bukkit.skylandsplus.generation.ChunkGenerator(id);
+		if(id == null || id.isEmpty()){
+			id = "offset=0";
+		}
+		
+		return new uk.co.jacekk.bukkit.skylandsplus.generation.ChunkGenerator(id);
 	}
 	
 }
