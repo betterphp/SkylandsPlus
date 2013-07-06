@@ -8,13 +8,11 @@ import uk.co.jacekk.bukkit.baseplugin.BasePlugin;
 import uk.co.jacekk.bukkit.baseplugin.config.PluginConfig;
 import uk.co.jacekk.bukkit.skylandsplus.listeners.MobSpawnListener;
 import uk.co.jacekk.bukkit.skylandsplus.listeners.PhysicsListener;
-import uk.co.jacekk.bukkit.skylandsplus.listeners.WorldListener;
 
 public class SkylandsPlus extends BasePlugin {
-	
 	public void onEnable(){
 		super.onEnable(true);
-		
+
 		this.config = new PluginConfig(new File(this.baseDirPath + File.separator + "config.yml"), Config.class, this.log);
 		
 		if (this.config.getBoolean(Config.PREVENT_SAND_FALLING)){
@@ -24,12 +22,11 @@ public class SkylandsPlus extends BasePlugin {
 		if (this.config.getBoolean(Config.RESTRICT_MOB_SPAWNING)){
 			this.pluginManager.registerEvents(new MobSpawnListener(this), this);
 		}
-		
-		this.pluginManager.registerEvents(new WorldListener(this), this);
 	}
-	
+	@Override
 	public ChunkGenerator getDefaultWorldGenerator(String worldName, String id){
-		return new uk.co.jacekk.bukkit.skylandsplus.generation.ChunkGenerator();
+		 if(id == "" || id == null) id = "offset=0";
+		 return new uk.co.jacekk.bukkit.skylandsplus.generation.ChunkGenerator(id);
 	}
 	
 }
