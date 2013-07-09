@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.server.v1_6_R1.Block;
-import net.minecraft.server.v1_6_R1.NoiseGeneratorOctaves;
-import net.minecraft.server.v1_6_R1.WorldGenCanyon;
-import net.minecraft.server.v1_6_R1.WorldGenCaves;
-import net.minecraft.server.v1_6_R1.WorldGenCavesHell;
-import net.minecraft.server.v1_6_R1.WorldGenMineshaft;
-import net.minecraft.server.v1_6_R1.WorldGenNether;
-import net.minecraft.server.v1_6_R1.WorldGenStronghold;
-import net.minecraft.server.v1_6_R1.WorldGenVillage;
-import net.minecraft.server.v1_6_R1.WorldGenLargeFeature;
+import net.minecraft.server.v1_6_R2.Block;
+import net.minecraft.server.v1_6_R2.NoiseGeneratorOctaves;
+import net.minecraft.server.v1_6_R2.WorldGenCanyon;
+import net.minecraft.server.v1_6_R2.WorldGenCaves;
+import net.minecraft.server.v1_6_R2.WorldGenCavesHell;
+import net.minecraft.server.v1_6_R2.WorldGenMineshaft;
+import net.minecraft.server.v1_6_R2.WorldGenNether;
+import net.minecraft.server.v1_6_R2.WorldGenStronghold;
+import net.minecraft.server.v1_6_R2.WorldGenVillage;
+import net.minecraft.server.v1_6_R2.WorldGenLargeFeature;
 
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
-import org.bukkit.craftbukkit.v1_6_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_6_R2.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
@@ -493,7 +493,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			}
 		}
 		
-		net.minecraft.server.v1_6_R1.World mcWorld = ((CraftWorld) world).getHandle();
+		net.minecraft.server.v1_6_R2.World mcWorld = ((CraftWorld) world).getHandle();
 		
 		byte[] blocks = new byte[32768];
 		
