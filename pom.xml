@@ -13,8 +13,8 @@
 		<upload.dbo.category>bukkit-plugins</upload.dbo.category>
 		<upload.dbo.slug>skylandsplus</upload.dbo.slug>
 		
-		<baseplugin.version>12</baseplugin.version>
-		<baseplugin.package>12</baseplugin.package>
+		<baseplugin.version>13</baseplugin.version>
+		<baseplugin.package>13</baseplugin.package>
 	</properties>
 	
 	<repositories>
@@ -40,7 +40,7 @@
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>craftbukkit</artifactId>
-			<version>1.6.2-R0.1-SNAPSHOT</version>
+			<version>1.6.2-R0.1</version>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
