@@ -4,22 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.server.v1_6_R3.Block;
-import net.minecraft.server.v1_6_R3.NoiseGeneratorOctaves;
-import net.minecraft.server.v1_6_R3.WorldGenCanyon;
-import net.minecraft.server.v1_6_R3.WorldGenCaves;
-import net.minecraft.server.v1_6_R3.WorldGenCavesHell;
-import net.minecraft.server.v1_6_R3.WorldGenMineshaft;
-import net.minecraft.server.v1_6_R3.WorldGenNether;
-import net.minecraft.server.v1_6_R3.WorldGenStronghold;
-import net.minecraft.server.v1_6_R3.WorldGenVillage;
-import net.minecraft.server.v1_6_R3.WorldGenLargeFeature;
+import net.minecraft.server.v1_7_R1.Block;
+import net.minecraft.server.v1_7_R1.Blocks;
+import net.minecraft.server.v1_7_R1.NoiseGeneratorOctaves;
+import net.minecraft.server.v1_7_R1.WorldGenCanyon;
+import net.minecraft.server.v1_7_R1.WorldGenCaves;
+import net.minecraft.server.v1_7_R1.WorldGenCavesHell;
+import net.minecraft.server.v1_7_R1.WorldGenMineshaft;
+import net.minecraft.server.v1_7_R1.WorldGenNether;
+import net.minecraft.server.v1_7_R1.WorldGenStronghold;
+import net.minecraft.server.v1_7_R1.WorldGenVillage;
+import net.minecraft.server.v1_7_R1.WorldGenLargeFeature;
 
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
-import org.bukkit.craftbukkit.v1_6_R3.CraftWorld;
+import org.bukkit.craftbukkit.v1_7_R1.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
@@ -137,10 +138,10 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 				ocean = Biome.valueOf(tokens[i].substring(5));
 			}else if (tokens[i].matches("water={1}\\d{1,3}")){
 				liquid = Integer.parseInt(tokens[i].substring(6)) + 1;
-				liquid_id = (byte) Block.WATER.id;
+				liquid_id = (byte) Material.WATER.getId();
 			}else if (tokens[i].matches("lava={1}\\d{1,3}")){
 				liquid = Integer.parseInt(tokens[i].substring(5)) + 1;
-				liquid_id = (byte) Block.LAVA.id;
+				liquid_id = (byte) Material.LAVA.getId();
 			}
 		}
 	}
@@ -263,7 +264,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		return adouble;
 	}
 	
-	private void shapeLand(World world, int chunkX, int chunkZ, byte[] blocks){
+	private void shapeLand(World world, int chunkX, int chunkZ, Block[] blocks){
 		byte b0 = 2;
 		int k = b0 + 1;
 		
@@ -272,19 +273,19 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		
 		this.q = this.a(this.q, chunkX * b0, 0, chunkZ * b0, k, l, i1);
 		
-		byte blockType;
+		Block blockType;
 		
 		switch (world.getEnvironment()){
 			case NETHER:
-				blockType = (byte) Material.NETHERRACK.getId();
+				blockType = Blocks.NETHERRACK;
 			break;
 			
 			case THE_END:
-				blockType = (byte) Material.ENDER_STONE.getId();
+				blockType = Blocks.WHITESTONE;
 			break;
 			
 			default:
-				blockType = (byte) Material.STONE.getId();
+				blockType = Blocks.STONE;
 			break;
 		}
 		
@@ -350,7 +351,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		}
 	}
 	
-	private void decorateLand(int chunkX, int chunkZ, byte[] blocks, BiomeGrid biomes){
+	private void decorateLand(int chunkX, int chunkZ, Block[] blocks, BiomeGrid biomes){
 		double d0 = 0.03125D;
 		
 		this.t = this.o.a(this.t, chunkX * 16, chunkZ * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
@@ -362,7 +363,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 				
 				Biome biome = biomes.getBiome(x, z);
 				
-				byte b1, b2;
+				Block b1, b2;
 				
 				if (only == true){
 					biomes.setBiome(x, z, onlybiome);
@@ -425,28 +426,28 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 				}
 				
 				if (biome == Biome.DESERT || biome == Biome.DESERT_HILLS){
-					b1 = (byte) Material.SAND.getId();
-					b2 = (byte) Material.SAND.getId();
+					b1 = Blocks.SAND;
+					b2 = Blocks.SAND;
 				}else if (biome == Biome.HELL){
-					b1 = (byte) Material.NETHERRACK.getId();
-					b2 = (byte) Material.NETHERRACK.getId();
+					b1 = Blocks.NETHERRACK;
+					b2 = Blocks.NETHERRACK;
 				}else if (biome == Biome.MUSHROOM_ISLAND || biome == Biome.MUSHROOM_SHORE){
-					b1 = (byte) Material.MYCEL.getId();
-					b2 = (byte) Material.DIRT.getId();
+					b1 = Blocks.MYCEL;
+					b2 = Blocks.DIRT;
 				}else{
-					b1 = (byte) Material.GRASS.getId();
-					b2 = (byte) Material.DIRT.getId();
+					b1 = Blocks.GRASS;
+					b2 = Blocks.DIRT;
 				}
 				
 				for (int y = 127; y >= 0; --y){
 					int l1 = x * 16 + z;
 					int i2 = l1 * 128 + y;
 					
-					byte b3 = blocks[i2];
+					Block b3 = blocks[i2];
 					
-					if (b3 == 0){
+					if (b3 == Blocks.AIR){
 						j1 = -1;
-					}else if (b3 == Material.STONE.getId()){
+					}else if (b3 == Blocks.STONE){
 						if (j1 == -1){
 							j1 = i1;
 							blocks[i2] = b1;
@@ -454,9 +455,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 							--j1;
 							blocks[i2] = b2;
 							
-							if (j1 == 0 && b2 == Material.SAND.getId()){
+							if (j1 == 0 && b2 == Blocks.SAND){
 								j1 = this.random.nextInt(4);
-								b2 = (byte) Material.SANDSTONE.getId();
+								b2 = Blocks.SANDSTONE;
 							}
 						}
 					}
@@ -493,9 +494,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			}
 		}
 		
-		net.minecraft.server.v1_6_R3.World mcWorld = ((CraftWorld) world).getHandle();
+		net.minecraft.server.v1_7_R1.World mcWorld = ((CraftWorld) world).getHandle();
 		
-		byte[] blocks = new byte[32768];
+		Block[] blocks = new Block[65536];
 		
 		this.random.setSeed(chunkX * 341873128712L + chunkZ * 132897987541L);
 		
@@ -542,10 +543,12 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		for (int x = 0; x < 16; ++x){
 			for (int y = 0 + cut_bottom; y < 128 - cut_top; ++y){
 				for (int z = 0; z < 16; ++z){
-					chunk[y + offset >> 4][((y + offset & 0xF) << 8) | (z << 4) | x] = blocks[(x * 16 + z) * 128 + y];
+					chunk[y + offset >> 4][((y + offset & 0xF) << 8) | (z << 4) | x] = ((Integer) Block.REGISTRY.b(blocks[(x * 16 + z) * 128 + y])).byteValue();
+					
 					if (bedrock == true && y == 0){
-						chunk[y - cut_bottom >> 4][((y - cut_bottom & 0xF) << 8) | (z << 4) | x] = (byte) Block.BEDROCK.id;
+						chunk[y - cut_bottom >> 4][((y - cut_bottom & 0xF) << 8) | (z << 4) | x] = (byte) Material.BEDROCK.getId();
 					}
+					
 					if (liquid > 0 && y <= liquid - 1 + cut_bottom && chunk[y - cut_bottom >> 4][((y - cut_bottom & 0xF) << 8) | (z << 4) | x] == 0){
 						chunk[y - cut_bottom >> 4][((y - cut_bottom & 0xF) << 8) | (z << 4) | x] = liquid_id;
 					}
