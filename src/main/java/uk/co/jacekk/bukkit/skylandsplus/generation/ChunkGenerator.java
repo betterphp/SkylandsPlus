@@ -102,9 +102,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			}else if (tokens[i].equals("no-ocean")){
 				no_ocean = true;
 				ocean = Biome.PLAINS;
-			}else if (tokens[i] == "mushroom"){
+			}else if (tokens[i].equals("mushroom")){
 				no_mushroom = false;
-			}else if (tokens[i] == "swampland"){
+			}else if (tokens[i].equals("swampland")){
 				no_swampland = false;
 			}else if (tokens[i].matches("only={1}[A-Z_]+")){
 				only = true;
