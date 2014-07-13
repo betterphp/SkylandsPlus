@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.server.v1_7_R3.Block;
-import net.minecraft.server.v1_7_R3.Blocks;
-import net.minecraft.server.v1_7_R3.NoiseGeneratorOctaves;
-import net.minecraft.server.v1_7_R3.WorldGenCanyon;
-import net.minecraft.server.v1_7_R3.WorldGenCaves;
-import net.minecraft.server.v1_7_R3.WorldGenCavesHell;
-import net.minecraft.server.v1_7_R3.WorldGenMineshaft;
-import net.minecraft.server.v1_7_R3.WorldGenNether;
-import net.minecraft.server.v1_7_R3.WorldGenStronghold;
-import net.minecraft.server.v1_7_R3.WorldGenVillage;
-import net.minecraft.server.v1_7_R3.WorldGenLargeFeature;
+import net.minecraft.server.v1_7_R4.Block;
+import net.minecraft.server.v1_7_R4.Blocks;
+import net.minecraft.server.v1_7_R4.NoiseGeneratorOctaves;
+import net.minecraft.server.v1_7_R4.WorldGenCanyon;
+import net.minecraft.server.v1_7_R4.WorldGenCaves;
+import net.minecraft.server.v1_7_R4.WorldGenCavesHell;
+import net.minecraft.server.v1_7_R4.WorldGenMineshaft;
+import net.minecraft.server.v1_7_R4.WorldGenNether;
+import net.minecraft.server.v1_7_R4.WorldGenStronghold;
+import net.minecraft.server.v1_7_R4.WorldGenVillage;
+import net.minecraft.server.v1_7_R4.WorldGenLargeFeature;
 
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.World.Environment;
 import org.bukkit.block.Biome;
-import org.bukkit.craftbukkit.v1_7_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_7_R4.CraftWorld;
 import org.bukkit.generator.BlockPopulator;
 
 public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
@@ -494,7 +494,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 			}
 		}
 		
-		net.minecraft.server.v1_7_R2.World mcWorld = ((CraftWorld) world).getHandle();
+		net.minecraft.server.v1_7_R4.World mcWorld = ((CraftWorld) world).getHandle();
 		
 		Block[] blocks = new Block[65536];
 		
@@ -539,7 +539,6 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		byte[][] chunk = new byte[16][4096];
 		
 		// TODO: Do this in a nice way.
-		// Yes. Do it. :3
 		for (int x = 0; x < 16; ++x){
 			for (int y = 0 + cut_bottom; y < 128 - cut_top; ++y){
 				for (int z = 0; z < 16; ++z){
