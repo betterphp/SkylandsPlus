@@ -452,7 +452,8 @@ public class TreePopulator extends BlockPopulator
 								&& b != Biome.MESA
 								&& b != Biome.MESA_PLATEAU_FOREST
 								&& b != Biome.MESA_PLATEAU_FOREST_MOUNTAINS
-								&& b != Biome.MESA_PLATEAU_MOUNTAINS)
+								&& b != Biome.MESA_PLATEAU_MOUNTAINS
+								&& b != Biome.ICE_PLAINS_SPIKES)
 							if (random.nextFloat() < FOREST)
 								world.generateTree(loc, TreeType.TREE);
 						break;

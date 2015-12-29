@@ -10,11 +10,11 @@ import net.minecraft.server.v1_7_R4.NoiseGeneratorOctaves;
 import net.minecraft.server.v1_7_R4.WorldGenCanyon;
 import net.minecraft.server.v1_7_R4.WorldGenCaves;
 import net.minecraft.server.v1_7_R4.WorldGenCavesHell;
+import net.minecraft.server.v1_7_R4.WorldGenLargeFeature;
 import net.minecraft.server.v1_7_R4.WorldGenMineshaft;
 import net.minecraft.server.v1_7_R4.WorldGenNether;
 import net.minecraft.server.v1_7_R4.WorldGenStronghold;
 import net.minecraft.server.v1_7_R4.WorldGenVillage;
-import net.minecraft.server.v1_7_R4.WorldGenLargeFeature;
 
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -220,6 +220,7 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator
 			    populators.add(new SnowPopulator());
 			    populators.add(new MushroomPopulator(world));
 			    populators.add(new CactusPopulator(world));
+			    populators.add(new RedSandPopulator());
 			break;
 			
 			case THE_END:
@@ -445,7 +446,6 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator
 	private void decorateLand(int chunkX, int chunkZ, Block[] blocks, BiomeGrid biomes)
 	{
 		double d0 = 0.03125D;
-		
 		this.t = this.o.a(this.t, chunkX * 16, chunkZ * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
 		
 		for (int z = 0; z < 16; ++z)
@@ -545,6 +545,11 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator
 					b1 = Blocks.SAND;
 					b2 = Blocks.SAND;
 				}
+				else if (biome == Biome.MESA || biome == Biome.MESA_BRYCE)
+				{
+					b1 = Blocks.SAND;
+					b2 = Blocks.HARDENED_CLAY;
+				}
 				else if (biome == Biome.HELL)
 				{
 					b1 = Blocks.NETHERRACK;
@@ -574,7 +579,8 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator
 					}
 					else if (b3 == Blocks.STONE)
 					{
-						if (j1 == -1){
+						if (j1 == -1)
+						{
 							j1 = i1;
 							blocks[i2] = b1;
 						}

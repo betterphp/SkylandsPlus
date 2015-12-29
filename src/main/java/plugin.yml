@@ -1,7 +1,0 @@
-name: SkylandsPlus
-version: "19-1.7.10"
-main: uk.co.jacekk.bukkit.skylandsplus.SkylandsPlus
-description: The SkylandsPlus Generator for 1.7.10
-author: Jenkins
-website: "http://dev.bukkit.org/bukkit-plugins/skylandsplus/"
-load: startup

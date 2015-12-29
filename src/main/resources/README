@@ -19,3 +19,6 @@ version 19-1.7.10
 - Added all trees generations for all biomes
 - Tests success for generating a normal world with Multiverse
 - Tests success for genereting a nether world with Multiverse
+
+version 19.1-1.7.10
+- Added hardened clay and red sand in Mesa biomes
