@@ -12,45 +12,31 @@ import org.bukkit.generator.BlockPopulator;
 
 import uk.co.jacekk.bukkit.baseplugin.util.ReflectionUtils;
 
-public class BiomePopulator extends BlockPopulator
-{
+public class BiomePopulator extends BlockPopulator {
+	
 	@Override
-	public void populate(World world, Random random, Chunk chunk)
-	{
+	public void populate(World world, Random random, Chunk chunk) {
 		Biome biome = world.getBiome(chunk.getX() * 16, chunk.getZ() * 16);
 		
 		//TODO: Some biomes are not being decorated.
 		
-		try
-		{
+		try{
 			ReflectionUtils.getFieldValue(BiomeBase.class, biome.name(), BiomeBase.class, null).a(((CraftWorld) world).getHandle(), random, chunk.getX() * 16, chunk.getZ() * 16);
-		}
-		catch (NoSuchFieldException e)
-		{
-			try
-			{
+		}catch (NoSuchFieldException e){
+			try{
 				ReflectionUtils.getFieldValue(BiomeBase.class, Biome.FOREST.name(), BiomeBase.class, null).a(((CraftWorld) world).getHandle(), random, chunk.getX() * 16, chunk.getZ() * 16);
-			}
-			catch (IllegalArgumentException le)
-			{
+			}catch (IllegalArgumentException le){
 				System.err.println(le.getMessage());
-			}
-			catch (RuntimeException le)
-			{
+			}catch (RuntimeException le){
 				// Decorator was already called on this chunk :/
-			}
-			catch (NoSuchFieldException le)
-			{
+			}catch (NoSuchFieldException le){
 				// This won't happen.
 			}
-		}
-		catch (IllegalArgumentException e)
-		{
+		}catch (IllegalArgumentException e){
 			System.err.println(e.getMessage());
-		}
-		catch (RuntimeException e)
-		{
+		}catch (RuntimeException e){
 			// Decorator was already called on this chunk :/
 		}
 	}
+	
 }
