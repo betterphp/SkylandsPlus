@@ -22,7 +22,7 @@ public class SnowPopulator extends BlockPopulator {
 
 				if (biome == Biome.ICE_PLAINS || biome == Biome.ICE_MOUNTAINS ||
 						biome == Biome.TAIGA || biome == Biome.TAIGA_HILLS ||
-						biome == Biome.FROZEN_OCEAN || biome == Biome.FROZEN_RIVER){
+						biome == Biome.FROZEN_OCEAN || biome == Biome.FROZEN_RIVER || biome == Biome.ICE_PLAINS_SPIKES){
 					int y = world.getHighestBlockYAt(chunkX + x, chunkZ + z);
 
 					if (y > 5){

@@ -15,7 +15,7 @@ import uk.co.jacekk.bukkit.baseplugin.util.ReflectionUtils;
 public class BiomePopulator extends BlockPopulator {
 	
 	@Override
-	public void populate(World world, Random random, Chunk chunk){
+	public void populate(World world, Random random, Chunk chunk) {
 		Biome biome = world.getBiome(chunk.getX() * 16, chunk.getZ() * 16);
 		
 		//TODO: Some biomes are not being decorated.

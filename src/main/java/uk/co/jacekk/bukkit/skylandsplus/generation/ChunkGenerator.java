@@ -10,11 +10,11 @@ import net.minecraft.server.v1_7_R4.NoiseGeneratorOctaves;
 import net.minecraft.server.v1_7_R4.WorldGenCanyon;
 import net.minecraft.server.v1_7_R4.WorldGenCaves;
 import net.minecraft.server.v1_7_R4.WorldGenCavesHell;
+import net.minecraft.server.v1_7_R4.WorldGenLargeFeature;
 import net.minecraft.server.v1_7_R4.WorldGenMineshaft;
 import net.minecraft.server.v1_7_R4.WorldGenNether;
 import net.minecraft.server.v1_7_R4.WorldGenStronghold;
 import net.minecraft.server.v1_7_R4.WorldGenVillage;
-import net.minecraft.server.v1_7_R4.WorldGenLargeFeature;
 
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -63,10 +63,12 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 	private boolean no_swampland = true;
 	private Biome onlybiome, plains, desert, forest, jungle, taiga, ice, ocean;
 	private Biome mushroom = Biome.FOREST;
-	private Biome swampland = Biome.ICE_PLAINS;
+	private Biome swampland = Biome.SWAMPLAND;
 	byte liquid_id;
 	
+	@SuppressWarnings("deprecation")
 	public ChunkGenerator(String id){
+		
 		String tokens[] = id.split("[,]");
 		
 		for (int i = 0; i < tokens.length; i++){
@@ -152,7 +154,17 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		switch (world.getEnvironment()){
 			case NORMAL:
 				populators.add(new BiomePopulator());
-				populators.add(new SnowPopulator());
+				populators.add(new LakePopulator(world));
+			    populators.add(new GrassPopulator(world));
+			    populators.add(new FlowerPopulator(world));
+			    populators.add(new PumpkinPopulator(world));
+			    populators.add(new MelonPopulator(world));
+			    populators.add(new OrePopulator(world));
+			    populators.add(new TreePopulator(world));
+			    populators.add(new SnowPopulator());
+			    populators.add(new MushroomPopulator(world));
+			    populators.add(new CactusPopulator(world));
+			    populators.add(new RedSandPopulator());
 			break;
 			
 			case THE_END:
@@ -163,6 +175,8 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 				populators.add(new NetherSoulSandPopulator(world));
 				populators.add(new NetherFirePopulator(world));
 				populators.add(new NetherGlowstonePopulator(world));
+				populators.add(new NetherWartPopulator(world));
+			    populators.add(new OrePopulator(world));
 			break;
 		}
 		
@@ -171,7 +185,8 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 	
 	// anybody know what this does, let me know !
 	private double[] a(double[] adouble, int i, int j, int k, int l, int i1, int j1){
-		if (adouble == null){
+		if (adouble == null)
+		{
 			adouble = new double[l * i1 * j1];
 		}
 		
@@ -353,7 +368,6 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 	
 	private void decorateLand(int chunkX, int chunkZ, Block[] blocks, BiomeGrid biomes){
 		double d0 = 0.03125D;
-		
 		this.t = this.o.a(this.t, chunkX * 16, chunkZ * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
 		
 		for (int z = 0; z < 16; ++z){
@@ -428,6 +442,9 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 				if (biome == Biome.DESERT || biome == Biome.DESERT_HILLS){
 					b1 = Blocks.SAND;
 					b2 = Blocks.SAND;
+				}else if (biome == Biome.MESA || biome == Biome.MESA_BRYCE){
+					b1 = Blocks.SAND;
+					b2 = Blocks.HARDENED_CLAY;
 				}else if (biome == Biome.HELL){
 					b1 = Blocks.NETHERRACK;
 					b2 = Blocks.NETHERRACK;
@@ -466,8 +483,10 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
-	public byte[][] generateBlockSections(World world, Random random, int chunkX, int chunkZ, BiomeGrid biomes){
+	public byte[][] generateBlockSections(World world, Random random, int chunkX, int chunkZ, BiomeGrid biomes)
+	{
 		Environment environment = world.getEnvironment();
 		
 		if (this.random == null){
@@ -557,5 +576,4 @@ public class ChunkGenerator extends org.bukkit.generator.ChunkGenerator {
 		
 		return chunk;
 	}
-	
 }

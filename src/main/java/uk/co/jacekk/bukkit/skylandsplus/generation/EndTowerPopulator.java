@@ -17,6 +17,7 @@ public class EndTowerPopulator extends BlockPopulator {
 		this.random = new Random(world.getSeed());
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void populate(World world, Random rand, Chunk chunk){
 		if (this.random.nextInt(100) < 10){
 			int x = this.random.nextInt(8) + 4;
